@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Play, Check } from "lucide-react";
+import { ArrowRight, Calendar, Play, Check, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -41,123 +41,139 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-primary pt-20 sm:pt-24">
-      {/* Decorative shapes */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/20 rounded-full translate-y-1/2 -translate-x-1/3 blur-3xl" />
+    <section className="relative overflow-hidden bg-primary pt-20 sm:pt-24 min-h-[100svh]">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/80" />
 
       <div className="container relative mx-auto px-4 sm:px-6">
-        <div className="grid items-center gap-8 py-12 sm:py-16 lg:grid-cols-2 lg:gap-12 lg:py-20">
+        <div className="grid items-end gap-0 lg:grid-cols-2 lg:gap-0 min-h-[calc(100svh-6rem)]">
+          
           {/* Left: Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-center lg:text-left"
+            className="flex flex-col justify-center py-12 sm:py-16 lg:py-20 text-center lg:text-left"
           >
-            <p className="mb-4 font-body text-xs font-semibold uppercase tracking-[0.2em] text-secondary sm:text-sm">
-              Coaching & Training
-            </p>
-            <h1 className="mb-6 font-display text-4xl font-bold leading-[1.1] text-primary-foreground sm:text-5xl lg:text-6xl xl:text-7xl">
+            <h1 className="mb-6 font-display text-[2.75rem] font-bold leading-[1.05] text-primary-foreground sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
               Professionell
               <br />
               <span className="text-secondary">Online Wirken</span>
             </h1>
-            <p className="mx-auto mb-8 max-w-lg font-body text-base leading-relaxed text-primary-foreground/80 sm:text-lg lg:mx-0">
+            <p className="mx-auto mb-10 max-w-md font-body text-base leading-relaxed text-primary-foreground/75 sm:text-lg lg:mx-0 lg:max-w-lg">
               Entfalte dein volles Potenzial in Videocalls, Online-Präsentationen und digitaler Kommunikation. Praxisnah, nachhaltig und mit Freude.
             </p>
 
-            {/* Stats row */}
-            <div className="mb-8 flex justify-center gap-8 lg:justify-start">
-              {[
-                { number: "15+", label: "Jahre Erfahrung" },
-                { number: "500+", label: "Teilnehmer:innen" },
-                { number: "98%", label: "Zufriedenheit" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="font-display text-2xl font-bold text-secondary sm:text-3xl">{stat.number}</p>
-                  <p className="font-body text-xs text-primary-foreground/60 sm:text-sm">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            {/* CTA Button */}
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start mb-12 lg:mb-16">
               <Button
                 size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-8 py-6 text-base font-semibold shadow-lg"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-10 py-7 text-base font-semibold shadow-lg inline-flex items-center gap-2"
                 onClick={() => setDialogOpen(true)}
               >
+                <span className="h-2 w-2 rounded-full bg-accent-foreground/80" />
                 Gratis Guide sichern
-                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button
-                size="lg"
-                className="border-2 border-secondary bg-transparent text-primary-foreground hover:bg-secondary/20 rounded-full px-8 py-6 text-base font-semibold"
-                asChild
-              >
-                <a href="https://zeeg.me" target="_blank" rel="noopener noreferrer">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Gespräch buchen
-                </a>
-              </Button>
+            </div>
+
+            {/* Social proof */}
+            <div className="flex flex-col items-center gap-3 lg:items-start">
+              <div className="flex items-center gap-4">
+                {/* Avatar stack */}
+                <div className="flex -space-x-2">
+                  {[1, 2, 3].map((i) => (
+                    <div
+                      key={i}
+                      className="h-9 w-9 rounded-full border-2 border-primary bg-secondary/60 flex items-center justify-center"
+                    >
+                      <span className="font-body text-xs font-semibold text-foreground/70">
+                        {["E", "M", "S"][i - 1]}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <p className="font-body text-sm font-semibold text-primary-foreground">
+                    500+ zufriedene Teilnehmer:innen
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1.5">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                ))}
+                <span className="ml-1 font-body text-sm text-primary-foreground/70">
+                  4.9 (500+) · Excellent
+                </span>
+              </div>
             </div>
           </motion.div>
 
-          {/* Right: Elisabeth's Image */}
+          {/* Right: Elisabeth's Image with decorative elements */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex justify-center lg:justify-end"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative flex justify-center lg:justify-end items-end self-end"
           >
-            <div className="relative">
-              <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] rounded-3xl overflow-hidden shadow-2xl border-4 border-primary-foreground/10">
-                <img
-                  src={elisabethCasual}
-                  alt="Elisabeth Brommer-Kern"
-                  className="w-full h-full object-cover object-top"
-                />
+            {/* Decorative circles behind the image */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="relative w-[340px] h-[340px] sm:w-[440px] sm:h-[440px] lg:w-[520px] lg:h-[520px]">
+                {/* Elliptical rings */}
+                <div className="absolute inset-0 rounded-full border-[3px] border-secondary/30 rotate-[15deg] scale-x-[1.3]" />
+                <div className="absolute inset-4 rounded-full border-[3px] border-secondary/20 -rotate-[10deg] scale-x-[1.4]" />
+                <div className="absolute inset-8 rounded-full border-[3px] border-secondary/15 rotate-[25deg] scale-x-[1.2]" />
               </div>
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-card rounded-2xl px-5 py-3 shadow-xl border border-border">
-                <p className="font-display text-sm font-semibold text-primary sm:text-base">
-                  Sustainable · Joyful · Professional
-                </p>
-              </div>
+            </div>
+
+            {/* Elisabeth image — bottom-aligned, no crop on head */}
+            <div className="relative z-10 w-[280px] sm:w-[360px] lg:w-[460px]">
+              <img
+                src={elisabethCasual}
+                alt="Elisabeth Brommer-Kern"
+                className="w-full h-auto object-contain drop-shadow-2xl"
+              />
             </div>
           </motion.div>
         </div>
+      </div>
 
-        {/* Video Section below */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mx-auto max-w-3xl pb-20 sm:pb-28"
-        >
-          <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-video border-2 border-primary-foreground/10">
-            <div className="flex h-full w-full items-center justify-center bg-foreground/90">
-              <div className="text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg transition-transform hover:scale-110 cursor-pointer sm:h-20 sm:w-20">
-                  <Play className="h-7 w-7 ml-1 sm:h-8 sm:w-8" />
+      {/* Video Section below hero */}
+      <div className="relative bg-primary">
+        <div className="container mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="mx-auto max-w-3xl py-16 sm:py-24"
+          >
+            <h2 className="mb-8 text-center font-display text-2xl font-bold text-primary-foreground sm:text-3xl lg:text-4xl">
+              Lerne Elisabeth kennen
+            </h2>
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-video border-2 border-primary-foreground/10">
+              <div className="flex h-full w-full items-center justify-center bg-foreground/90">
+                <div className="text-center">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg transition-transform hover:scale-110 cursor-pointer sm:h-20 sm:w-20">
+                    <Play className="h-7 w-7 ml-1 sm:h-8 sm:w-8" />
+                  </div>
+                  <p className="font-body text-sm text-primary-foreground/80 sm:text-base">
+                    Video von Elisabeth ansehen
+                  </p>
                 </div>
-                <p className="font-body text-sm text-primary-foreground/80 sm:text-base">
-                  Video von Elisabeth ansehen
-                </p>
               </div>
             </div>
-          </div>
-          <div className="mt-8 text-center">
-            <Button
-              size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-10 py-6 text-lg font-semibold shadow-xl"
-              onClick={() => setDialogOpen(true)}
-            >
-              Hol dir den Gratis Guide
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </motion.div>
+            <div className="mt-8 text-center">
+              <Button
+                size="lg"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-10 py-6 text-lg font-semibold shadow-xl"
+                onClick={() => setDialogOpen(true)}
+              >
+                Hol dir den Gratis Guide
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Newsletter Popup Dialog */}
