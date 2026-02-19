@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import logoSjp from "@/assets/logo-sjp.jpg";
+import logoSjp from "@/assets/logo-sjp-lotus.png";
 
 const HeroSection = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
