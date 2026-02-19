@@ -92,8 +92,7 @@ const HeroSection = () => {
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                className="border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 rounded-full px-8 py-6 text-base font-semibold"
+                className="border-2 border-secondary bg-transparent text-primary-foreground hover:bg-secondary/20 rounded-full px-8 py-6 text-base font-semibold"
                 asChild
               >
                 <a href="https://zeeg.me" target="_blank" rel="noopener noreferrer">
