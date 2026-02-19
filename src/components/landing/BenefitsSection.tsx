@@ -24,24 +24,27 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="bg-card py-20 lg:py-28">
-      <div className="container mx-auto px-6">
+    <section id="vorteile" className="bg-card py-20 lg:py-28">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-14 text-center"
         >
-          <h2 className="mb-4 font-display text-3xl font-bold text-foreground lg:text-4xl">
-            Was du bekommst
+          <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.2em] text-accent sm:text-sm">
+            Deine Vorteile
+          </p>
+          <h2 className="mb-4 font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+            Was du <span className="text-primary">bekommst</span>
           </h2>
-          <p className="mx-auto max-w-2xl font-body text-lg text-muted-foreground">
+          <p className="mx-auto max-w-2xl font-body text-base text-muted-foreground sm:text-lg">
             Dein Weg zu mehr Wirkung und Präsenz in der digitalen Welt
           </p>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
           {benefits.map((benefit, index) => (
             <motion.div
               key={benefit.title}
@@ -49,15 +52,15 @@ const BenefitsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="group rounded-2xl border border-border bg-background p-8 text-center transition-all hover:border-primary/30 hover:shadow-lg"
+              className="group rounded-2xl border border-border bg-background p-6 sm:p-8 text-center transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1"
             >
-              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                <benefit.icon className="h-7 w-7" />
+              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground sm:h-16 sm:w-16">
+                <benefit.icon className="h-6 w-6 sm:h-7 sm:w-7" />
               </div>
-              <h3 className="mb-3 font-display text-xl font-semibold text-foreground">
+              <h3 className="mb-3 font-display text-lg font-semibold text-foreground sm:text-xl">
                 {benefit.title}
               </h3>
-              <p className="font-body leading-relaxed text-muted-foreground">
+              <p className="font-body text-sm leading-relaxed text-muted-foreground sm:text-base">
                 {benefit.description}
               </p>
             </motion.div>
