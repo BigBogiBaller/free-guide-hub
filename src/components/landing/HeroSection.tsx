@@ -61,7 +61,8 @@ const HeroSection = () => {
               <span className="text-secondary">Online Wirken</span>
             </h1>
             <p className="mx-auto mb-10 max-w-md font-body text-base leading-relaxed text-primary-foreground/75 sm:text-lg lg:mx-0 lg:max-w-lg">
-              Entfalte dein volles Potenzial in Videocalls, Online-Präsentationen und digitaler Kommunikation. Praxisnah, nachhaltig und mit Freude.
+              Werde souverän, klar und wirkungsvoll in jeder Online-Veranstaltung.
+              Kostenloser Impuls-Newsletter + Checkliste für Coaches, Trainer:innen, Führungskräfte und alle, die online überzeugen wollen.
             </p>
 
             {/* CTA Button */}
@@ -72,7 +73,7 @@ const HeroSection = () => {
                 onClick={() => setDialogOpen(true)}
               >
                 <span className="h-2 w-2 rounded-full bg-accent-foreground/80" />
-                Gratis Guide sichern
+                Jetzt kostenlos anmelden
               </Button>
             </div>
 
@@ -94,7 +95,7 @@ const HeroSection = () => {
                 </div>
                 <div>
                   <p className="font-body text-sm font-semibold text-primary-foreground">
-                    500+ zufriedene Teilnehmer:innen
+                    8.000+ geschulte Teilnehmer:innen
                   </p>
                 </div>
               </div>
@@ -103,7 +104,7 @@ const HeroSection = () => {
                   <Star key={i} className="h-4 w-4 fill-accent text-accent" />
                 ))}
                 <span className="ml-1 font-body text-sm text-primary-foreground/70">
-                  4.9 (500+) · Excellent
+                  20+ Jahre Erfahrung
                 </span>
               </div>
             </div>
@@ -168,7 +169,7 @@ const HeroSection = () => {
                 className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-10 py-6 text-lg font-semibold shadow-xl"
                 onClick={() => setDialogOpen(true)}
               >
-                Hol dir den Gratis Guide
+                Checkliste + Newsletter sichern
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
@@ -190,7 +191,7 @@ const HeroSection = () => {
                 </DialogTitle>
                 <DialogDescription className="mt-2 font-body text-muted-foreground">
                   Bitte prüfe dein E-Mail-Postfach und bestätige deine Anmeldung,
-                  um deinen kostenlosen Guide zu erhalten.
+                  um deine kostenlose Checkliste zu erhalten.
                 </DialogDescription>
               </DialogHeader>
               <Button
@@ -211,10 +212,10 @@ const HeroSection = () => {
             <>
               <DialogHeader>
                 <DialogTitle className="font-display text-2xl font-bold text-foreground">
-                  Hol dir deinen Gratis Guide
+                  Checkliste + Newsletter sichern
                 </DialogTitle>
                 <DialogDescription className="font-body text-muted-foreground">
-                  Melde dich an und erhalte deinen kostenlosen Guide für professionelles Online-Auftreten.
+                  Melde dich an und erhalte deine kostenlose Checkliste „Dein perfekter Start in jedes Online-Meeting" direkt in dein Postfach.
                 </DialogDescription>
               </DialogHeader>
               <form onSubmit={handleSubmit} className="mt-2 space-y-4">
@@ -264,7 +265,7 @@ const HeroSection = () => {
                   disabled={isSubmitting}
                   className="w-full bg-accent text-accent-foreground hover:bg-accent/90 py-6 text-base font-semibold rounded-xl"
                 >
-                  {isSubmitting ? "Wird gesendet..." : "Jetzt Guide sichern"}
+                  {isSubmitting ? "Wird gesendet..." : "Jetzt kostenlos anmelden"}
                   {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
                 </Button>
               </form>
