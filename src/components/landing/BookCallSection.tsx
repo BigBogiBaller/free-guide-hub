@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import elisabethPortrait1 from "@/assets/elisabeth-portrait-1.png";
+import elisabethPortrait3 from "@/assets/elisabeth-portrait-3.png";
 
 const BookCallSection = () => {
   return (
@@ -48,7 +48,7 @@ const BookCallSection = () => {
           >
             <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-4 border-primary-foreground/20 shadow-2xl">
               <img
-                src={elisabethPortrait1}
+                src={elisabethPortrait3}
                 alt="Elisabeth Brommer-Kern"
                 className="w-full h-full object-cover"
               />
