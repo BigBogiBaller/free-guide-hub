@@ -1,6 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import avatar1 from "@/assets/avatar-1.jpg";
 import avatar2 from "@/assets/avatar-2.jpg";
 import avatar3 from "@/assets/avatar-3.jpg";
@@ -36,105 +34,55 @@ const testimonials = [
   },
 ];
 
+// Double the array for seamless loop
+const doubledTestimonials = [...testimonials, ...testimonials];
+
 const TestimonialsSection = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const scrollToIndex = useCallback((index: number) => {
-    if (!scrollRef.current) return;
-    const card = scrollRef.current.children[index] as HTMLElement;
-    if (card) {
-      scrollRef.current.scrollTo({ left: card.offsetLeft - scrollRef.current.offsetLeft, behavior: "smooth" });
-    }
-  }, []);
-
-  const next = useCallback(() => {
-    setCurrentIndex((prev) => {
-      const nextIdx = (prev + 1) % testimonials.length;
-      scrollToIndex(nextIdx);
-      return nextIdx;
-    });
-  }, [scrollToIndex]);
-
-  const prev = useCallback(() => {
-    setCurrentIndex((prev) => {
-      const prevIdx = (prev - 1 + testimonials.length) % testimonials.length;
-      scrollToIndex(prevIdx);
-      return prevIdx;
-    });
-  }, [scrollToIndex]);
-
-  // Auto-scroll every 5 seconds
-  useEffect(() => {
-    intervalRef.current = setInterval(next, 5000);
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [next]);
-
-  const resetInterval = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(next, 5000);
-  };
-
   return (
-    <section className="bg-background py-20 lg:py-28">
+    <section className="bg-background py-20 lg:py-28 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
-        {/* Header */}
-        <div className="mb-12 flex items-end justify-between">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-              Was Teilnehmer:innen
-              <br />
-              <span className="text-primary">sagen</span>
-            </h2>
-            <p className="mt-4 max-w-md font-body text-base text-muted-foreground sm:text-lg">
-              Stimmen von Menschen, die ihre Online-Wirkung nachhaltig
-              verbessert haben.
-            </p>
-          </motion.div>
-
-          {/* Navigation arrows */}
-          <div className="hidden gap-2 sm:flex">
-            <button
-              onClick={() => { prev(); resetInterval(); }}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-muted"
-              aria-label="Zurück"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              onClick={() => { next(); resetInterval(); }}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-foreground text-card transition-colors hover:bg-foreground/90"
-              aria-label="Weiter"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-
-        {/* Cards carousel */}
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-12"
         >
-          {testimonials.map((t, i) => (
-            <motion.div
+          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+            Was Teilnehmer:innen
+            <br />
+            <span className="text-primary">sagen</span>
+          </h2>
+          <p className="mt-4 max-w-md font-body text-base text-muted-foreground sm:text-lg">
+            Stimmen von Menschen, die ihre Online-Wirkung nachhaltig
+            verbessert haben.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Infinite scrolling marquee */}
+      <div className="relative">
+        {/* Fade edges */}
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-background to-transparent sm:w-24" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-background to-transparent sm:w-24" />
+
+        <motion.div
+          className="flex gap-6 w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 30,
+              ease: "linear",
+            },
+          }}
+        >
+          {doubledTestimonials.map((t, i) => (
+            <div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="min-w-[300px] max-w-[340px] flex-shrink-0 snap-start rounded-2xl border border-border bg-card p-6 sm:p-8 flex flex-col justify-between"
+              className="w-[320px] flex-shrink-0 rounded-2xl border border-border bg-card p-6 sm:p-8 flex flex-col justify-between"
             >
-              {/* Quote icon */}
               <div>
                 <span className="font-display text-5xl leading-none text-primary/30">
                   „
@@ -143,8 +91,6 @@ const TestimonialsSection = () => {
                   {t.quote}
                 </p>
               </div>
-
-              {/* Author */}
               <div className="mt-8 flex items-center gap-3">
                 <img
                   src={t.avatar}
@@ -160,25 +106,9 @@ const TestimonialsSection = () => {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-          {/* Spacer to prevent last card from being cut off */}
-          <div className="min-w-[1px] flex-shrink-0" />
-        </div>
-
-        {/* Dot indicators */}
-        <div className="mt-6 flex justify-center gap-2">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => { setCurrentIndex(i); scrollToIndex(i); resetInterval(); }}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                i === currentIndex ? "w-8 bg-primary" : "w-2.5 bg-border hover:bg-muted-foreground/50"
-              }`}
-              aria-label={`Testimonial ${i + 1}`}
-            />
-          ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
