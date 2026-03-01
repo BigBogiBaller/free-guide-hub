@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Linkedin, Youtube, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import logoSjp from "@/assets/logo-sjp-lotus.png";
 
 const Footer = () => {
@@ -52,10 +53,10 @@ const Footer = () => {
               {/* Social icons */}
               <div className="mt-6 flex gap-3">
                 {[
-                  { icon: Facebook, href: "#", label: "Facebook" },
-                  { icon: Instagram, href: "#", label: "Instagram" },
-                  { icon: Linkedin, href: "#", label: "LinkedIn" },
-                  { icon: Youtube, href: "#", label: "YouTube" },
+                  { icon: Instagram, href: "https://www.instagram.com/elisabeth.brommer.kern/", label: "Instagram" },
+                  { icon: Facebook, href: "https://www.facebook.com/Elisabeth.Brommer.Kern", label: "Facebook" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/elisabeth-brommer/", label: "LinkedIn" },
+                  { icon: Youtube, href: "https://www.youtube.com/@Eisabeth-SJP-Development/", label: "YouTube" },
                 ].map((s) => (
                   <a
                     key={s.label}
@@ -105,15 +106,15 @@ const Footer = () => {
             © {new Date().getFullYear()} Elisabeth Brommer-Kern. Alle Rechte vorbehalten.
           </p>
           <div className="flex gap-6 font-body text-xs text-primary-foreground/50">
-            <a href="#" className="transition-colors hover:text-primary-foreground">
+            <Link to="/impressum" className="transition-colors hover:text-primary-foreground">
               Impressum
-            </a>
-            <a href="#" className="transition-colors hover:text-primary-foreground">
+            </Link>
+            <Link to="/datenschutz" className="transition-colors hover:text-primary-foreground">
               Datenschutz
-            </a>
-            <a href="#" className="transition-colors hover:text-primary-foreground">
+            </Link>
+            <Link to="/agb" className="transition-colors hover:text-primary-foreground">
               AGB
-            </a>
+            </Link>
           </div>
         </div>
       </div>
