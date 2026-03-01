@@ -111,28 +111,18 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Right: Elisabeth's Image with decorative elements */}
+          {/* Right: Elisabeth's Image – full height, edge-to-edge like reference */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end items-center order-1 lg:order-2"
+            className="relative flex justify-center lg:justify-end items-stretch order-1 lg:order-2 lg:-mr-8 xl:-mr-16"
           >
-            {/* Decorative circles behind the image */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="relative w-[340px] h-[340px] sm:w-[440px] sm:h-[440px] lg:w-[520px] lg:h-[520px]">
-                <div className="absolute inset-0 rounded-full border-[3px] border-secondary/30 rotate-[15deg] scale-x-[1.3]" />
-                <div className="absolute inset-4 rounded-full border-[3px] border-secondary/20 -rotate-[10deg] scale-x-[1.4]" />
-                <div className="absolute inset-8 rounded-full border-[3px] border-secondary/15 rotate-[25deg] scale-x-[1.2]" />
-              </div>
-            </div>
-
-            {/* Elisabeth image */}
-            <div className="relative z-10 w-[280px] sm:w-[360px] lg:w-[460px]">
+            <div className="relative z-10 w-full max-w-[500px] lg:max-w-none lg:w-[110%] xl:w-[120%]">
               <img
                 src={elisabethCasual}
                 alt="Elisabeth Brommer-Kern"
-                className="w-full h-auto object-contain drop-shadow-2xl rounded-2xl"
+                className="w-full h-[50vh] sm:h-[60vh] lg:h-[calc(100svh-6rem)] object-cover object-top rounded-2xl lg:rounded-none lg:rounded-l-3xl shadow-2xl"
               />
             </div>
           </motion.div>
