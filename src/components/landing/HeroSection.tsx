@@ -49,14 +49,14 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/80" />
 
       <div className="container relative mx-auto px-4 sm:px-6">
-        <div className="grid items-end gap-0 lg:grid-cols-2 lg:gap-0 min-h-[calc(100svh-6rem)]">
+      <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-0 min-h-[calc(100svh-6rem)]">
           
           {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="flex flex-col justify-center py-12 sm:py-16 lg:py-20 text-center lg:text-left"
+            className="flex flex-col justify-center py-12 sm:py-16 lg:py-20 text-center lg:text-left order-2 lg:order-1"
           >
             <h1 className="mb-6 font-display text-[2.75rem] font-bold leading-[1.05] text-primary-foreground sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
               Professionell
@@ -116,24 +116,23 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end items-end self-end"
+            className="relative flex justify-center lg:justify-end items-center order-1 lg:order-2"
           >
             {/* Decorative circles behind the image */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="relative w-[340px] h-[340px] sm:w-[440px] sm:h-[440px] lg:w-[520px] lg:h-[520px]">
-                {/* Elliptical rings */}
                 <div className="absolute inset-0 rounded-full border-[3px] border-secondary/30 rotate-[15deg] scale-x-[1.3]" />
                 <div className="absolute inset-4 rounded-full border-[3px] border-secondary/20 -rotate-[10deg] scale-x-[1.4]" />
                 <div className="absolute inset-8 rounded-full border-[3px] border-secondary/15 rotate-[25deg] scale-x-[1.2]" />
               </div>
             </div>
 
-            {/* Elisabeth image — bottom-aligned, no crop on head */}
+            {/* Elisabeth image */}
             <div className="relative z-10 w-[280px] sm:w-[360px] lg:w-[460px]">
               <img
                 src={elisabethCasual}
                 alt="Elisabeth Brommer-Kern"
-                className="w-full h-auto object-contain drop-shadow-2xl"
+                className="w-full h-auto object-contain drop-shadow-2xl rounded-2xl"
               />
             </div>
           </motion.div>

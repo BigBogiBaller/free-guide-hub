@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import avatar1 from "@/assets/avatar-1.jpg";
@@ -8,7 +8,7 @@ import avatar3 from "@/assets/avatar-3.jpg";
 const testimonials = [
   {
     quote:
-      "Seit dem Training f\u00FChle ich mich endlich sicher vor der Kamera. Meine Online-Meetings laufen jetzt ganz anders \u2014 souver\u00E4n und authentisch.",
+      "Seit dem Training fühle ich mich endlich sicher vor der Kamera. Meine Online-Meetings laufen jetzt ganz anders — souverän und authentisch.",
     name: "Sandra M.",
     role: "Teamleiterin",
     avatar: avatar1,
@@ -22,30 +22,60 @@ const testimonials = [
   },
   {
     quote:
-      "Ich h\u00E4tte nie gedacht, dass man seine Online-Pr\u00E4senz so stark verbessern kann. Jetzt bekomme ich regelm\u00E4\u00DFig positives Feedback.",
+      "Ich hätte nie gedacht, dass man seine Online-Präsenz so stark verbessern kann. Jetzt bekomme ich regelmäßig positives Feedback.",
     name: "Julia R.",
     role: "Projektmanagerin",
     avatar: avatar3,
   },
   {
     quote:
-      "Das Training war ein echtes Aha-Erlebnis. Endlich wei\u00DF ich, worauf es bei virtuellen Pr\u00E4sentationen ankommt.",
+      "Das Training war ein echtes Aha-Erlebnis. Endlich weiß ich, worauf es bei virtuellen Präsentationen ankommt.",
     name: "Markus L.",
-    role: "Gesch\u00E4ftsf\u00FChrer",
+    role: "Geschäftsführer",
     avatar: avatar1,
   },
 ];
 
 const TestimonialsSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const scroll = (direction: "left" | "right") => {
+  const scrollToIndex = useCallback((index: number) => {
     if (!scrollRef.current) return;
-    const scrollAmount = 360;
-    scrollRef.current.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
+    const card = scrollRef.current.children[index] as HTMLElement;
+    if (card) {
+      card.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    }
+  }, []);
+
+  const next = useCallback(() => {
+    setCurrentIndex((prev) => {
+      const nextIdx = (prev + 1) % testimonials.length;
+      scrollToIndex(nextIdx);
+      return nextIdx;
     });
+  }, [scrollToIndex]);
+
+  const prev = useCallback(() => {
+    setCurrentIndex((prev) => {
+      const prevIdx = (prev - 1 + testimonials.length) % testimonials.length;
+      scrollToIndex(prevIdx);
+      return prevIdx;
+    });
+  }, [scrollToIndex]);
+
+  // Auto-scroll every 5 seconds
+  useEffect(() => {
+    intervalRef.current = setInterval(next, 5000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [next]);
+
+  const resetInterval = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(next, 5000);
   };
 
   return (
@@ -73,14 +103,14 @@ const TestimonialsSection = () => {
           {/* Navigation arrows */}
           <div className="hidden gap-2 sm:flex">
             <button
-              onClick={() => scroll("left")}
+              onClick={() => { prev(); resetInterval(); }}
               className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-muted"
               aria-label="Zurück"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
-              onClick={() => scroll("right")}
+              onClick={() => { next(); resetInterval(); }}
               className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-foreground text-card transition-colors hover:bg-foreground/90"
               aria-label="Weiter"
             >
@@ -92,8 +122,8 @@ const TestimonialsSection = () => {
         {/* Cards carousel */}
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
         >
           {testimonials.map((t, i) => (
             <motion.div
@@ -131,6 +161,22 @@ const TestimonialsSection = () => {
                 </div>
               </div>
             </motion.div>
+          ))}
+          {/* Spacer to prevent last card from being cut off */}
+          <div className="min-w-[1px] flex-shrink-0" />
+        </div>
+
+        {/* Dot indicators */}
+        <div className="mt-6 flex justify-center gap-2">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setCurrentIndex(i); scrollToIndex(i); resetInterval(); }}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                i === currentIndex ? "w-8 bg-primary" : "w-2.5 bg-border hover:bg-muted-foreground/50"
+              }`}
+              aria-label={`Testimonial ${i + 1}`}
+            />
           ))}
         </div>
       </div>
