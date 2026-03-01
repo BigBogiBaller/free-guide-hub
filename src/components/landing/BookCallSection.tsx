@@ -32,7 +32,7 @@ const BookCallSection = () => {
               className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-10 py-6 text-lg font-semibold shadow-xl"
               asChild
             >
-              <a href="https://zeeg.me" target="_blank" rel="noopener noreferrer">
+              <a href="/buchen">
                 <Calendar className="mr-2 h-5 w-5" />
                 Kostenloses Gespräch buchen
               </a>

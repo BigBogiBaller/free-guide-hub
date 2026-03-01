@@ -38,7 +38,7 @@ const Navbar = () => {
               className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-6 font-body font-semibold"
               asChild
             >
-              <a href="https://zeeg.me" target="_blank" rel="noopener noreferrer">
+              <a href="/buchen">
                 <Calendar className="mr-1.5 h-4 w-4" />
                 Gespräch buchen
               </a>
@@ -79,7 +79,7 @@ const Navbar = () => {
                   className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-body font-semibold w-full"
                   asChild
                 >
-                  <a href="https://zeeg.me" target="_blank" rel="noopener noreferrer">
+                  <a href="/buchen">
                     <Calendar className="mr-1.5 h-4 w-4" />
                     Gespräch buchen
                   </a>
