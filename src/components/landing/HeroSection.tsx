@@ -13,6 +13,9 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import elisabethCasual from "@/assets/elisabeth-casual.png";
+import avatar1 from "@/assets/avatar-1.jpg";
+import avatar2 from "@/assets/avatar-2.jpg";
+import avatar3 from "@/assets/avatar-3.jpg";
 
 const HeroSection = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -81,15 +84,13 @@ const HeroSection = () => {
             <div className="flex flex-col items-center gap-3 lg:items-start">
               <div className="flex items-center gap-4">
                 {/* Avatar stack */}
-                <div className="flex -space-x-2">
-                  {[1, 2, 3].map((i) => (
+                <div className="flex -space-x-3">
+                  {[avatar1, avatar2, avatar3].map((src, i) => (
                     <div
                       key={i}
-                      className="h-9 w-9 rounded-full border-2 border-primary bg-secondary/60 flex items-center justify-center"
+                      className="h-10 w-10 rounded-full border-2 border-primary overflow-hidden"
                     >
-                      <span className="font-body text-xs font-semibold text-foreground/70">
-                        {["E", "M", "S"][i - 1]}
-                      </span>
+                      <img src={src} alt="Teilnehmer:in" className="h-full w-full object-cover" />
                     </div>
                   ))}
                 </div>
