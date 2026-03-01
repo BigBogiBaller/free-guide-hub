@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+
+const checklistItems = [
+  "Was du vor jedem Call prüfen solltest",
+  "Wie du Stimme, Körpersprache und Technik optimal einsetzt",
+  "Wie du souverän wirkst – auch wenn du nervös bist",
+  "Wie du deine Wirkung bewusst steuerst",
+];
 
 const NewsletterSection = () => {
   const [firstName, setFirstName] = useState("");
@@ -29,7 +36,6 @@ const NewsletterSection = () => {
     setIsSubmitting(true);
 
     // TODO: Brevo Edge Function integration
-    // For now, simulate success
     await new Promise((r) => setTimeout(r, 1000));
     setIsSuccess(true);
     setIsSubmitting(false);
@@ -49,8 +55,8 @@ const NewsletterSection = () => {
             </div>
             <h3 className="mb-3 font-display text-2xl font-bold">Vielen Dank!</h3>
             <p className="font-body text-primary-foreground/90">
-              Bitte prüfe dein E-Mail-Postfach und bestätige deine Anmeldung, 
-              um deinen kostenlosen Guide zu erhalten.
+              Bitte prüfe dein E-Mail-Postfach und bestätige deine Anmeldung,
+              um deine kostenlose Checkliste zu erhalten.
             </p>
           </motion.div>
         </div>
@@ -61,29 +67,47 @@ const NewsletterSection = () => {
   return (
     <section id="newsletter" className="bg-card py-20 lg:py-28">
       <div className="container mx-auto px-6">
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl bg-background border border-border p-8 shadow-sm lg:p-12"
+            className="grid gap-8 rounded-3xl bg-background border border-border p-8 shadow-sm lg:grid-cols-2 lg:p-12"
           >
-            <div className="mb-8 text-center">
+            {/* Left: Leadmagnet info */}
+            <div>
               <p className="mb-2 font-body text-sm font-semibold uppercase tracking-widest text-accent">
-                Kostenloser Guide
+                Dein Leadmagnet
               </p>
-              <h2 className="mb-3 font-display text-3xl font-bold text-foreground lg:text-4xl">
-                Hol dir deinen Guide
+              <h2 className="mb-3 font-display text-2xl font-bold text-foreground lg:text-3xl">
+                Kostenlose Checkliste: „Dein perfekter Start in jedes Online-Meeting"
               </h2>
-              <p className="font-body text-muted-foreground">
-                Melde dich für den Newsletter an und erhalte deinen kostenlosen Guide 
-                für professionelles Online-Auftreten direkt in dein Postfach.
+              <p className="mb-6 font-body text-muted-foreground">
+                Du bekommst eine kompakte, wirkungsvolle Übersicht:
+              </p>
+              <ul className="space-y-3">
+                {checklistItems.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
+                    <span className="font-body text-sm text-foreground sm:text-base">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 font-body text-sm text-muted-foreground italic">
+                Diese Checkliste ist dein schneller Einstieg in mehr Wirkungskompetenz.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
+            {/* Right: Form */}
+            <div className="flex flex-col justify-center">
+              <h3 className="mb-2 font-display text-xl font-bold text-foreground">
+                Jetzt kostenlos anmelden
+              </h3>
+              <p className="mb-5 font-body text-sm text-muted-foreground">
+                Erhalte deine Checkliste + regelmäßige Impulse für mehr Wirkung in Online-Veranstaltungen.
+              </p>
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <Input
                   placeholder="Dein Vorname"
                   value={firstName}
@@ -91,8 +115,6 @@ const NewsletterSection = () => {
                   className="h-12 rounded-xl bg-card font-body text-base"
                   maxLength={100}
                 />
-              </div>
-              <div>
                 <Input
                   type="email"
                   placeholder="Deine E-Mail-Adresse"
@@ -101,32 +123,32 @@ const NewsletterSection = () => {
                   className="h-12 rounded-xl bg-card font-body text-base"
                   maxLength={255}
                 />
-              </div>
-              <div className="flex items-start gap-3">
-                <Checkbox
-                  id="privacy"
-                  checked={privacy}
-                  onCheckedChange={(checked) => setPrivacy(checked === true)}
-                  className="mt-1"
-                />
-                <label htmlFor="privacy" className="cursor-pointer font-body text-sm leading-relaxed text-muted-foreground">
-                  Ich bin damit einverstanden, den Newsletter zu erhalten und akzeptiere die{" "}
-                  <a href="#" className="text-accent underline hover:no-underline">
-                    Datenschutzbestimmungen
-                  </a>
-                  . Du kannst dich jederzeit abmelden.
-                </label>
-              </div>
-              <Button
-                type="submit"
-                size="lg"
-                disabled={isSubmitting}
-                className="w-full bg-accent text-accent-foreground hover:bg-accent/90 py-6 text-base font-semibold rounded-xl"
-              >
-                {isSubmitting ? "Wird gesendet..." : "Jetzt Guide sichern"}
-                {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
-              </Button>
-            </form>
+                <div className="flex items-start gap-3">
+                  <Checkbox
+                    id="privacy"
+                    checked={privacy}
+                    onCheckedChange={(checked) => setPrivacy(checked === true)}
+                    className="mt-1"
+                  />
+                  <label htmlFor="privacy" className="cursor-pointer font-body text-sm leading-relaxed text-muted-foreground">
+                    Ich bin damit einverstanden, den Newsletter zu erhalten und akzeptiere die{" "}
+                    <a href="#" className="text-accent underline hover:no-underline">
+                      Datenschutzbestimmungen
+                    </a>
+                    . Du kannst dich jederzeit abmelden.
+                  </label>
+                </div>
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={isSubmitting}
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 py-6 text-base font-semibold rounded-xl"
+                >
+                  {isSubmitting ? "Wird gesendet..." : "Checkliste + Newsletter sichern"}
+                  {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
+                </Button>
+              </form>
+            </div>
           </motion.div>
         </div>
       </div>

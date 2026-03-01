@@ -41,19 +41,18 @@ const AboutSection = () => {
               Elisabeth <span className="text-primary">Brommer-Kern</span>
             </h2>
             <p className="mb-4 font-body text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Als erfahrene Trainerin und Coach unterstütze ich Fach- und Führungskräfte dabei,
-              in der digitalen Welt professionell und authentisch aufzutreten.
+              Ich bin Trainerin, Speakerin und Autorin von „Professionell Online Wirken". 
+              In den letzten Jahren habe ich tausende Menschen in Online-Veranstaltungen begleitet — 
+              von kleinen Teams bis zu globalen Change-Projekten.
             </p>
             <p className="mb-8 font-body text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Mit einem ganzheitlichen Ansatz verbinde ich Kommunikationsexpertise,
-              Präsenztraining und praktische Tools für den digitalen Arbeitsalltag.
-              Nachhaltig, mit Freude und auf den Punkt.
+              Meine Mission: Menschen dabei unterstützen, authentisch, souverän und wirkungsvoll online aufzutreten.
             </p>
 
             <div className="grid grid-cols-3 gap-4 sm:gap-6">
               {[
-                { number: "15+", label: "Jahre Erfahrung" },
-                { number: "500+", label: "Teilnehmer:innen" },
+                { number: "20+", label: "Jahre Erfahrung" },
+                { number: "8.000+", label: "Teilnehmer:innen" },
                 { number: "98%", label: "Zufriedenheit" },
               ].map((stat) => (
                 <div key={stat.label} className="rounded-2xl bg-card border border-border p-4 text-center">

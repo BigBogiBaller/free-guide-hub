@@ -1,24 +1,31 @@
 import { motion } from "framer-motion";
-import { Video, MessageCircle, Lightbulb } from "lucide-react";
+import { Zap, BookOpen, Sparkles, Brain, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const benefits = [
   {
-    icon: Video,
-    title: "Sicherheit in Videocalls",
+    icon: Zap,
+    title: "Klare, sofort umsetzbare Tipps",
     description:
-      "Lerne, wie du in Online-Meetings souverän und authentisch auftrittst – mit Techniken, die sofort wirken.",
+      "Kurz, prägnant und praxisnah — Impulse, die du direkt in deinem nächsten Online-Meeting anwenden kannst.",
   },
   {
-    icon: MessageCircle,
-    title: "Wirkungsvolle Kommunikation",
+    icon: BookOpen,
+    title: "Übungen aus meiner Praxis",
     description:
-      "Verbessere deine digitale Präsenz und Wirkung, damit deine Botschaft klar und überzeugend ankommt.",
+      "Bewährte Übungen aus über 20 Jahren als Trainerin und aus meinem Buch \u201EProfessionell Online Wirken\u201C.",
   },
   {
-    icon: Lightbulb,
-    title: "Praxisnahe Tipps",
+    icon: Sparkles,
+    title: "Impulse für deine Online-Wirkung",
     description:
-      "Erhalte wöchentliche Impulse und konkrete Strategien, die du direkt in deinem Arbeitsalltag umsetzen kannst.",
+      "Tipps für Stimme, Körpersprache, Mindset und Technik — damit deine Wirkung kein Zufall ist.",
+  },
+  {
+    icon: Brain,
+    title: "Future Skills für die digitale Welt",
+    description:
+      "Stärke die Kompetenzen, die dich in der digitalen Arbeitswelt souverän und wirkungsvoll machen.",
   },
 ];
 
@@ -34,24 +41,25 @@ const BenefitsSection = () => {
           className="mb-14 text-center"
         >
           <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.2em] text-accent sm:text-sm">
-            Deine Vorteile
+            Warum dieser Newsletter?
           </p>
           <h2 className="mb-4 font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Was du <span className="text-primary">bekommst</span>
+            Mit meinem Impuls-Newsletter <span className="text-primary">erhältst du</span>
           </h2>
           <p className="mx-auto max-w-2xl font-body text-base text-muted-foreground sm:text-lg">
-            Dein Weg zu mehr Wirkung und Präsenz in der digitalen Welt
+            Online sichtbar zu sein ist heute selbstverständlich — aber wirkungsvoll zu sein ist eine Kunst. 
+            Stimme, Körpersprache, Technik, Nervosität … irgendetwas passt nicht zusammen? Das ändern wir.
           </p>
         </motion.div>
 
-        <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
           {benefits.map((benefit, index) => (
             <motion.div
               key={benefit.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
+              transition={{ duration: 0.5, delay: index * 0.12 }}
               className="group rounded-2xl border border-border bg-background p-6 sm:p-8 text-center transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1"
             >
               <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground sm:h-16 sm:w-16">
