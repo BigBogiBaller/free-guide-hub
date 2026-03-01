@@ -7,11 +7,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 
 const checklistItems = [
-  "Was du vor jedem Call prüfen solltest",
-  "Wie du Stimme, Körpersprache und Technik optimal einsetzt",
-  "Wie du souverän wirkst – auch wenn du nervös bist",
-  "Wie du deine Wirkung bewusst steuerst",
-];
+"Was du vor jedem Call prüfen solltest",
+"Wie du Stimme, Körpersprache und Technik optimal einsetzt",
+"Wie du souverän wirkst – auch wenn du nervös bist",
+"Wie du deine Wirkung bewusst steuerst"];
+
 
 const NewsletterSection = () => {
   const [firstName, setFirstName] = useState("");
@@ -48,8 +48,8 @@ const NewsletterSection = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="mx-auto max-w-lg rounded-3xl bg-primary p-12 text-center text-primary-foreground"
-          >
+            className="mx-auto max-w-lg rounded-3xl bg-primary p-12 text-center text-primary-foreground">
+
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary-foreground/20">
               <Check className="h-8 w-8" />
             </div>
@@ -60,8 +60,8 @@ const NewsletterSection = () => {
             </p>
           </motion.div>
         </div>
-      </section>
-    );
+      </section>);
+
   }
 
   return (
@@ -73,13 +73,13 @@ const NewsletterSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid gap-8 rounded-3xl bg-background border border-border p-8 shadow-sm lg:grid-cols-2 lg:p-12"
-          >
+            className="grid gap-8 rounded-3xl bg-background border border-border p-8 shadow-sm lg:grid-cols-2 lg:p-12">
+
             {/* Left: Leadmagnet info */}
             <div>
-              <p className="mb-2 font-body text-sm font-semibold uppercase tracking-widest text-accent">
-                Dein Leadmagnet
-              </p>
+              
+
+
               <h2 className="mb-3 font-display text-2xl font-bold text-foreground lg:text-3xl">
                 Kostenlose Checkliste: „Dein perfekter Start in jedes Online-Meeting"
               </h2>
@@ -87,12 +87,12 @@ const NewsletterSection = () => {
                 Du bekommst eine kompakte, wirkungsvolle Übersicht:
               </p>
               <ul className="space-y-3">
-                {checklistItems.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
+                {checklistItems.map((item) =>
+                <li key={item} className="flex items-start gap-2.5">
                     <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
                     <span className="font-body text-sm text-foreground sm:text-base">{item}</span>
                   </li>
-                ))}
+                )}
               </ul>
               <p className="mt-6 font-body text-sm text-muted-foreground italic">
                 Diese Checkliste ist dein schneller Einstieg in mehr Wirkungskompetenz.
@@ -113,23 +113,23 @@ const NewsletterSection = () => {
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   className="h-12 rounded-xl bg-card font-body text-base"
-                  maxLength={100}
-                />
+                  maxLength={100} />
+
                 <Input
                   type="email"
                   placeholder="Deine E-Mail-Adresse"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="h-12 rounded-xl bg-card font-body text-base"
-                  maxLength={255}
-                />
+                  maxLength={255} />
+
                 <div className="flex items-start gap-3">
                   <Checkbox
                     id="privacy"
                     checked={privacy}
                     onCheckedChange={(checked) => setPrivacy(checked === true)}
-                    className="mt-1"
-                  />
+                    className="mt-1" />
+
                   <label htmlFor="privacy" className="cursor-pointer font-body text-sm leading-relaxed text-muted-foreground">
                     Ich bin damit einverstanden, den Newsletter zu erhalten und akzeptiere die{" "}
                     <a href="#" className="text-accent underline hover:no-underline">
@@ -142,8 +142,8 @@ const NewsletterSection = () => {
                   type="submit"
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 py-6 text-base font-semibold rounded-xl"
-                >
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 py-6 text-base font-semibold rounded-xl">
+
                   {isSubmitting ? "Wird gesendet..." : "Checkliste + Newsletter sichern"}
                   {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
                 </Button>
@@ -152,8 +152,8 @@ const NewsletterSection = () => {
           </motion.div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default NewsletterSection;
