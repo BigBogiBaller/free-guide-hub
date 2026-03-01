@@ -45,7 +45,7 @@ const TestimonialsSection = () => {
     if (!scrollRef.current) return;
     const card = scrollRef.current.children[index] as HTMLElement;
     if (card) {
-      card.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+      scrollRef.current.scrollTo({ left: card.offsetLeft - scrollRef.current.offsetLeft, behavior: "smooth" });
     }
   }, []);
 
