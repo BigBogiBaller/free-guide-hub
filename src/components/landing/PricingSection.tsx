@@ -1,5 +1,13 @@
-import { CheckCircle2 } from "lucide-react";
+import { useState } from "react";
+import { CheckCircle2, Calendar, Clock, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const plans = [
   {
@@ -46,7 +54,22 @@ const plans = [
   },
 ];
 
+const webinarDates = [
+  {
+    date: "27. März 2026",
+    time: "09:30 – 10:30 Uhr",
+    link: "https://events.teams.microsoft.com/event/24091924-27d5-4dad-8113-0f403e543112@39c4c2ff-68df-4637-9c72-bcfea6b40e11",
+  },
+  {
+    date: "30. März 2026",
+    time: "18:00 – 19:00 Uhr",
+    link: "https://events.teams.microsoft.com/event/b9154026-928a-4640-95ca-ce276b53134a@39c4c2ff-68df-4637-9c72-bcfea6b40e11",
+  },
+];
+
 const PricingSection = () => {
+  const [webinarOpen, setWebinarOpen] = useState(false);
+
   return (
     <section id="angebote" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4 md:px-6">
@@ -74,12 +97,10 @@ const PricingSection = () => {
                   : "bg-card border border-border shadow-sm hover:shadow-md"
               }`}
             >
-              {/* Plan name */}
               <h3 className="font-playfair text-xl font-bold text-foreground mb-2">
                 {plan.name}
               </h3>
 
-              {/* Price */}
               <div className="mb-4">
                 {plan.currency ? (
                   <div className="flex items-baseline gap-1">
@@ -97,12 +118,10 @@ const PricingSection = () => {
                 )}
               </div>
 
-              {/* Description */}
               <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
                 {plan.description}
               </p>
 
-              {/* Features */}
               <ul className="space-y-3 mb-8 flex-1">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
@@ -112,21 +131,92 @@ const PricingSection = () => {
                 ))}
               </ul>
 
-              {/* CTA */}
-              <Button
-                asChild
-                className={`w-full rounded-full text-base py-6 ${
-                  plan.highlighted
-                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                }`}
-              >
-                <a href="/buchen">{plan.cta}</a>
-              </Button>
+              {plan.name === "Schnupper-Webinar" ? (
+                <Button
+                  onClick={() => setWebinarOpen(true)}
+                  className="w-full rounded-full text-base py-6 bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                >
+                  {plan.cta}
+                </Button>
+              ) : (
+                <Button
+                  asChild
+                  className={`w-full rounded-full text-base py-6 ${
+                    plan.highlighted
+                      ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  <a
+                    href={
+                      plan.name === "AKAD-Training"
+                        ? "https://www.akad.ch/angebot/professionell-online-wirken-fit-fuer-die-zukunft-mit-future-skills/"
+                        : "/buchen"
+                    }
+                    target={plan.name === "AKAD-Training" ? "_blank" : undefined}
+                    rel={plan.name === "AKAD-Training" ? "noopener noreferrer" : undefined}
+                  >
+                    {plan.cta}
+                  </a>
+                </Button>
+              )}
             </div>
           ))}
         </div>
       </div>
+
+      {/* Webinar Date Selection Dialog */}
+      <Dialog open={webinarOpen} onOpenChange={setWebinarOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-playfair text-2xl">Schnupper-Webinar buchen</DialogTitle>
+            <DialogDescription>
+              Wählen Sie Ihren Wunschtermin für das kostenlose Webinar.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4 mt-2">
+            {webinarDates.map((item) => (
+              <a
+                key={item.date}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-xl border border-border p-5 hover:border-primary hover:shadow-md transition-all group"
+              >
+                <div className="flex items-center gap-3 mb-1">
+                  <Calendar className="w-5 h-5 text-primary" />
+                  <span className="font-semibold text-foreground">{item.date}</span>
+                </div>
+                <div className="flex items-center gap-3 mb-1">
+                  <Clock className="w-5 h-5 text-primary" />
+                  <span className="text-muted-foreground text-sm">{item.time}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Globe className="w-5 h-5 text-primary" />
+                  <span className="text-muted-foreground text-sm">Online</span>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="text-sm text-muted-foreground mt-2 space-y-1">
+            <p>👉 Die Teilnahme ist kostenlos.</p>
+            <p>👉 Anmeldung erforderlich – Plätze begrenzt.</p>
+            <p className="pt-2">
+              Ich freue mich darauf, Sie kennenzulernen und Ihnen einen Einblick in das Thema
+              <span className="italic"> Professionell Online Wirken</span> zu geben.
+            </p>
+            <p className="pt-1">
+              Es gelten unsere{" "}
+              <a href="/agb" className="underline text-primary hover:text-primary/80">
+                AGB
+              </a>
+              .
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
