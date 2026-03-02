@@ -114,13 +114,14 @@ const PricingSection = () => {
 
               {/* CTA */}
               <Button
+                asChild
                 className={`w-full rounded-full text-base py-6 ${
                   plan.highlighted
                     ? "bg-primary text-primary-foreground hover:bg-primary/90"
                     : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                 }`}
               >
-                {plan.cta}
+                <a href="/buchen">{plan.cta}</a>
               </Button>
             </div>
           ))}
