@@ -67,7 +67,7 @@ const NewsletterSection = () => {
   return (
     <section id="newsletter" className="bg-card py-20 lg:py-28">
       <div className="container mx-auto px-6">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
