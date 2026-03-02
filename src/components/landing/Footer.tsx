@@ -21,7 +21,7 @@ const Footer = () => {
               </p>
             </div>
             <a
-              href="#erstgespraech"
+              href="/buchen"
               className="group flex items-center gap-3 rounded-full border border-primary-foreground/20 bg-primary-foreground px-8 py-4 font-body text-sm font-semibold text-foreground transition-all hover:bg-primary-foreground/90"
             >
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
