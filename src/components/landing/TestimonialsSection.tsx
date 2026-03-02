@@ -49,7 +49,7 @@ const TestimonialsSection = () => {
           className="mb-12"
         >
           <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Was Teilnehmer:innen
+            Was Teilnehmende
             <br />
             <span className="text-primary">sagen</span>
           </h2>
