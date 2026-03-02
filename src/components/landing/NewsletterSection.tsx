@@ -73,7 +73,7 @@ const NewsletterSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid gap-8 rounded-3xl bg-background border border-border p-8 shadow-sm lg:grid-cols-2 lg:p-12">
+            className="grid gap-8 rounded-3xl bg-background border border-border p-4 sm:p-8 shadow-sm lg:grid-cols-2 lg:p-12 overflow-hidden">
 
             {/* Left: Leadmagnet info */}
             <div>
