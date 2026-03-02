@@ -95,8 +95,11 @@ const HeroSection = () => {
                   ))}
                 </div>
                 <div>
-                  <p className="font-body text-sm font-semibold text-primary-foreground">
-                    8.000+ geschulte Teilnehmer:innen
+                  <p className="font-body text-xs sm:text-sm font-semibold text-primary-foreground leading-tight">
+                    8.000+ geschulte
+                    <span className="sm:inline"> </span>
+                    <br className="sm:hidden" />
+                    Teilnehmer:innen
                   </p>
                 </div>
               </div>
