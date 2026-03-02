@@ -56,7 +56,7 @@ const AboutSection = () => {
             <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-8">
               {[
                 { number: "20+", label: "Jahre Erfahrung" },
-                { number: "8.000+", label: "Teilnehmer:innen" },
+                { number: "8.000+", label: "Teilnehmende" },
                 { number: "98%", label: "Zufriedenheit" },
               ].map((stat) => (
                 <div key={stat.label} className="rounded-2xl bg-card border border-border p-4 text-center">

@@ -90,7 +90,7 @@ const HeroSection = () => {
                       key={i}
                       className="h-10 w-10 rounded-full border-2 border-primary overflow-hidden"
                     >
-                      <img src={src} alt="Teilnehmer:in" className="h-full w-full object-cover" />
+                      <img src={src} alt="Teilnehmende" className="h-full w-full object-cover" />
                     </div>
                   ))}
                 </div>
@@ -99,7 +99,7 @@ const HeroSection = () => {
                     8.000+ geschulte
                     <span className="sm:inline"> </span>
                     <br className="sm:hidden" />
-                    Teilnehmer:innen
+                    Teilnehmende
                   </p>
                 </div>
               </div>
