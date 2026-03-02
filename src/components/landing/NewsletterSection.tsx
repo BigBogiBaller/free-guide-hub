@@ -107,7 +107,7 @@ const NewsletterSection = () => {
               <p className="mb-5 font-body text-sm text-muted-foreground">
                 Erhalte deine Checkliste + regelmäßige Impulse für mehr Wirkung in Online-Veranstaltungen.
               </p>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4 max-w-sm mx-auto lg:max-w-none lg:mx-0">
                 <Input
                   placeholder="Dein Vorname"
                   value={firstName}
