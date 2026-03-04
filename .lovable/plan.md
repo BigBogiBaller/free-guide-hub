@@ -1,63 +1,49 @@
 
 
-# Landing Page für Elisabeth Brommer-Kern – Aktualisierter Plan
+# Brevo Newsletter-Integration
 
-## Überblick
-Eine professionelle, warme Landing Page inspiriert von den Referenz-Designs (Bild 2, 4, 5 – modernes Coaching-Layout mit klaren Sektionen, großen Headlines, Testimonials-Bereich und prominenten CTAs). Integration von Brevo für Newsletter und einem Zeeg.me Call-Booking-Button.
+Listen-ID: **3** -- notiert.
 
-## Design-Inspiration & Stil
-Orientierung an den bevorzugten Designs (Bilder 2, 4, 5):
-- **Große, mutige Headlines** mit warmem, einladendem Ton
-- **Sektionen klar voneinander getrennt** mit abwechselnden Hintergründen (Cream/Weiß/Dunkelgrün)
-- **Runde Bildrahmen** für Elisabeth's Foto (Platzhalter)
-- **Prominente CTA-Buttons** in Blau (#265EA2) und Dunkelgrün (#295C38)
-- Farbpalette: Dunkelgrün, Schilfgrün, Anthrazit, Cream, Blau – gemäß Branding
+## Was wird gebaut
 
-## Seitenstruktur
+### 1. Brevo API-Key als Secret speichern
+- Den API-Key `xkeysib-2a10b9d3e515...` sicher als `BREVO_API_KEY` Secret speichern (wird über das Secret-Tool angefordert)
 
-### 1. Hero-Bereich
-- Logo oben
-- Große Headline: „Professionell Online Wirken" (Platzhalter)
-- Kurzer Untertitel über den Mehrwert
-- Zwei CTAs nebeneinander: **„Gratis Guide sichern"** + **„Kostenloses Gespräch buchen"** (→ zeeg.me Link)
-- Platzhalter für ein großes Foto von Elisabeth
+### 2. Edge Function: `subscribe-newsletter`
+Neue Datei: `supabase/functions/subscribe-newsletter/index.ts`
 
-### 2. Vorteile / Was du bekommst
-- 3 Benefit-Karten mit Icons (ähnlich Bild 4/5 Stil)
-- z.B. Sicherheit in Videocalls, Wirkungsvolle Kommunikation, Praxisnahe Tipps
-- Platzhalter-Texte
+- Empfängt `firstName` und `email` per POST
+- Validiert Eingaben (E-Mail-Format, Länge)
+- Erstellt Kontakt in Brevo via `POST https://api.brevo.com/v3/contacts`
+  - Setzt `FIRSTNAME` Attribut
+  - Ordnet Kontakt der **Liste 3** zu
+  - Aktiviert Double-Opt-In (`DOI`) via Brevo Template
+- CORS-Headers für Browser-Zugriff
+- Fehlerbehandlung (doppelter Kontakt, ungültige E-Mail etc.)
 
-### 3. Über Elisabeth
-- Foto-Platzhalter + Kurztext über ihre Expertise
-- „Sustainable · Joyful · Professional" Tagline
-- Zahlen/Achievements wenn vorhanden (Platzhalter)
+Config in `supabase/config.toml`:
+```toml
+[functions.subscribe-newsletter]
+verify_jwt = false
+```
 
-### 4. Newsletter & Guide Opt-in
-- Eingabefelder: Vorname, E-Mail
-- Datenschutz-Checkbox
-- „Jetzt Guide sichern"-Button
-- Brevo-Integration via Supabase Edge Function
+### 3. Frontend: `NewsletterSection.tsx` anpassen
+- Die simulierte `setTimeout`-Logik durch einen echten Aufruf der Edge Function ersetzen
+- Fehlerbehandlung mit Toast-Meldungen bei API-Fehlern
+- Erfolgsanzeige bleibt wie bisher
 
-### 5. Call buchen (CTA-Sektion)
-- Auffällige Sektion mit dunklem/grünem Hintergrund
-- Headline: „Lass uns sprechen" o.ä.
-- Button → öffnet zeeg.me Booking-Link (extern)
+## Ablauf
+```text
+Formular → Edge Function → Brevo API (Kontakt + Liste 3)
+                              ↓
+                   Brevo sendet Double-Opt-In Mail
+                              ↓
+                   Nutzer bestätigt → Automation startet
+                              ↓
+                   E-Mail-Sequenz läuft automatisch
+```
 
-### 6. Footer
-- SJP Development GmbH, Kreuzlingen
-- Impressum & Datenschutz Links (Platzhalter)
-- Copyright
-
-## Technische Integration
-- **Brevo**: Supabase Edge Function sendet Formulardaten an Brevo API (Kontakt erstellen + Liste zuordnen + Double-Opt-In). API-Key wird als Secret gespeichert, sobald Elisabeth ihr Brevo-Konto hat.
-- **Zeeg.me**: Einfacher externer Link-Button, der die Booking-Seite öffnet
-- **Responsive**: Mobile-optimiert
-
-## Noch offen (von Elisabeth zu liefern)
-- Name des Guides / Leadmagnets
-- Foto von Elisabeth
-- Finale Texte
-- Brevo API-Key
-- Zeeg.me Booking-URL
-- Impressum & Datenschutz
+## Was du in Brevo noch einrichten musst
+- **Automation**: Trigger = "Kontakt wird zur Liste 3 hinzugefügt" → E-Mail mit Checkliste senden → Follow-up E-Mails
+- **Double-Opt-In Template** konfigurieren (unter Kontakte → Einstellungen)
 
