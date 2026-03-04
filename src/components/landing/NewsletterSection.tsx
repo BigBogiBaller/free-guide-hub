@@ -35,10 +35,33 @@ const NewsletterSection = () => {
 
     setIsSubmitting(true);
 
-    // TODO: Brevo Edge Function integration
-    await new Promise((r) => setTimeout(r, 1000));
-    setIsSuccess(true);
-    setIsSubmitting(false);
+    try {
+      const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID;
+      const res = await fetch(
+        `https://${projectId}.supabase.co/functions/v1/subscribe-newsletter`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ firstName: firstName.trim(), email: email.trim() }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Anmeldung fehlgeschlagen.");
+      }
+
+      setIsSuccess(true);
+    } catch (err: any) {
+      toast({
+        title: "Fehler bei der Anmeldung",
+        description: err.message || "Bitte versuche es später erneut.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSuccess) {
