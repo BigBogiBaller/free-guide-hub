@@ -1,2 +1,4 @@
+project_id = "aqifvotqvtwhsgigodau"
+
 [functions.subscribe-newsletter]
 verify_jwt = false
