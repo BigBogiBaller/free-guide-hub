@@ -7,7 +7,7 @@ const benefits = [
     icon: Zap,
     title: "Klare, sofort umsetzbare Tipps",
     description:
-      "Kurz, prägnant und praxisnah — Impulse, die du direkt in deinem nächsten Online-Meeting anwenden kannst.",
+      "Kurz, prägnant und praxisnah — Impulse, die Sie direkt in Ihrem nächsten Online-Meeting anwenden können.",
   },
   {
     icon: BookOpen,
@@ -25,7 +25,7 @@ const benefits = [
     icon: Brain,
     title: "Future Skills für die digitale Welt",
     description:
-      "Stärke die Kompetenzen, die dich in der digitalen Arbeitswelt souverän und wirkungsvoll machen.",
+      "Stärken Sie die Kompetenzen, die Sie in der digitalen Arbeitswelt souverän und wirkungsvoll machen.",
   },
 ];
 
@@ -44,7 +44,7 @@ const BenefitsSection = () => {
             Warum dieser Newsletter?
           </p>
           <h2 className="mb-4 font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Mit meinem Impuls-Newsletter <span className="text-primary">erhältst du</span>
+            Mit meinem Impuls-Newsletter <span className="text-primary">erhalten Sie</span>
           </h2>
           <p className="mx-auto max-w-2xl font-body text-base text-muted-foreground sm:text-lg">
             Online sichtbar zu sein ist heute selbstverständlich — aber wirkungsvoll zu sein ist eine Kunst. 

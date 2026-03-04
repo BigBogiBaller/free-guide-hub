@@ -33,7 +33,7 @@ const Booking = () => {
           Kostenloses Erstgespräch buchen
         </h1>
         <p className="font-body text-muted-foreground mb-8 max-w-xl">
-          Wähle einen passenden Termin und ich melde mich bei dir.
+          Wählen Sie einen passenden Termin und ich melde mich bei Ihnen.
         </p>
 
         <div

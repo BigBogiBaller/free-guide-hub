@@ -7,10 +7,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 
 const checklistItems = [
-"Was du vor jedem Call prüfen solltest",
-"Wie du Stimme, Körpersprache und Technik optimal einsetzt",
-"Wie du souverän wirkst – auch wenn du nervös bist",
-"Wie du deine Wirkung bewusst steuerst"];
+"Was Sie vor jedem Call prüfen sollten",
+"Wie Sie Stimme, Körpersprache und Technik optimal einsetzen",
+"Wie Sie souverän wirken – auch wenn Sie nervös sind",
+"Wie Sie Ihre Wirkung bewusst steuern"];
 
 
 const NewsletterSection = () => {
@@ -25,11 +25,11 @@ const NewsletterSection = () => {
     e.preventDefault();
 
     if (!firstName.trim() || !email.trim()) {
-      toast({ title: "Bitte fülle alle Felder aus.", variant: "destructive" });
+      toast({ title: "Bitte füllen Sie alle Felder aus.", variant: "destructive" });
       return;
     }
     if (!privacy) {
-      toast({ title: "Bitte akzeptiere die Datenschutzbestimmungen.", variant: "destructive" });
+      toast({ title: "Bitte akzeptieren Sie die Datenschutzbestimmungen.", variant: "destructive" });
       return;
     }
 
@@ -56,7 +56,7 @@ const NewsletterSection = () => {
     } catch (err: any) {
       toast({
         title: "Fehler bei der Anmeldung",
-        description: err.message || "Bitte versuche es später erneut.",
+        description: err.message || "Bitte versuchen Sie es später erneut.",
         variant: "destructive",
       });
     } finally {
@@ -78,8 +78,8 @@ const NewsletterSection = () => {
             </div>
             <h3 className="mb-3 font-display text-2xl font-bold">Vielen Dank!</h3>
             <p className="font-body text-primary-foreground/90">
-              Bitte prüfe dein E-Mail-Postfach und bestätige deine Anmeldung,
-              um deine kostenlose Checkliste zu erhalten.
+              Bitte prüfen Sie Ihr E-Mail-Postfach und bestätigen Sie Ihre Anmeldung,
+              um Ihre kostenlose Checkliste zu erhalten.
             </p>
           </motion.div>
         </div>
@@ -104,10 +104,10 @@ const NewsletterSection = () => {
 
 
               <h2 className="mb-3 font-display text-2xl font-bold text-foreground lg:text-3xl">
-                Kostenlose Checkliste: „Dein perfekter Start in jedes Online-Meeting"
+                Kostenlose Checkliste: „Ihr perfekter Start in jedes Online-Meeting"
               </h2>
               <p className="mb-6 font-body text-muted-foreground">
-                Du bekommst eine kompakte, wirkungsvolle Übersicht:
+                Sie bekommen eine kompakte, wirkungsvolle Übersicht:
               </p>
               <ul className="space-y-3">
                 {checklistItems.map((item) =>
@@ -118,7 +118,7 @@ const NewsletterSection = () => {
                 )}
               </ul>
               <p className="mt-6 font-body text-sm text-muted-foreground italic">
-                Diese Checkliste ist dein schneller Einstieg in mehr Wirkungskompetenz.
+                Diese Checkliste ist Ihr schneller Einstieg in mehr Wirkungskompetenz.
               </p>
             </div>
 
@@ -128,11 +128,11 @@ const NewsletterSection = () => {
                 Jetzt kostenlos anmelden
               </h3>
               <p className="mb-5 font-body text-sm text-muted-foreground">
-                Erhalte deine Checkliste + regelmäßige Impulse für mehr Wirkung in Online-Veranstaltungen.
+                Erhalten Sie Ihre Checkliste + regelmäßige Impulse für mehr Wirkung in Online-Veranstaltungen.
               </p>
               <form onSubmit={handleSubmit} className="space-y-4 max-w-sm mx-auto lg:max-w-none lg:mx-0">
                 <Input
-                  placeholder="Dein Vorname"
+                  placeholder="Ihr Vorname"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   className="h-12 rounded-xl bg-card font-body text-base"
@@ -140,7 +140,7 @@ const NewsletterSection = () => {
 
                 <Input
                   type="email"
-                  placeholder="Deine E-Mail-Adresse"
+                  placeholder="Ihre E-Mail-Adresse"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="h-12 rounded-xl bg-card font-body text-base"
@@ -158,7 +158,7 @@ const NewsletterSection = () => {
                     <a href="#" className="text-accent underline hover:no-underline">
                       Datenschutzbestimmungen
                     </a>
-                    . Du kannst dich jederzeit abmelden.
+                    . Sie können sich jederzeit abmelden.
                   </label>
                 </div>
                 <Button
