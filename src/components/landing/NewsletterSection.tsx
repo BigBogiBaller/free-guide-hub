@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const checklistItems = [
 "Was Sie vor jedem Call prüfen sollten",
@@ -36,20 +37,16 @@ const NewsletterSection = () => {
     setIsSubmitting(true);
 
     try {
-      const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID;
-      const res = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/subscribe-newsletter`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ firstName: firstName.trim(), email: email.trim() }),
-        }
-      );
+      const { data, error } = await supabase.functions.invoke("subscribe-newsletter", {
+        body: { firstName: firstName.trim(), email: email.trim() },
+      });
 
-      const data = await res.json();
+      if (error) {
+        throw new Error(error.message || "Anmeldung fehlgeschlagen.");
+      }
 
-      if (!res.ok) {
-        throw new Error(data.error || "Anmeldung fehlgeschlagen.");
+      if (data?.error) {
+        throw new Error(data.error);
       }
 
       setIsSuccess(true);
