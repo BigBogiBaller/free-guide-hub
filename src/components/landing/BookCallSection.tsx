@@ -25,7 +25,7 @@ const BookCallSection = () => {
             </h2>
             <p className="mb-8 font-body text-base text-primary-foreground/80 sm:text-lg">
               In einem kostenlosen Erstgespräch finden wir gemeinsam heraus,
-              wie du deine Online-Wirkung auf das nächste Level bringst.
+              wie Sie Ihre Online-Wirkung auf das nächste Level bringen.
             </p>
             <Button
               size="lg"

@@ -16,8 +16,8 @@ const Footer = () => {
                 <span className="text-secondary">wirkungsvoller aufzutreten?</span>
               </h2>
               <p className="mt-4 max-w-md font-body text-base text-primary-foreground/70 sm:text-lg">
-                Starte jetzt mit einem kostenlosen Erstgespräch und entdecke,
-                wie du souverän und authentisch online wirkst.
+                Starten Sie jetzt mit einem kostenlosen Erstgespräch und entdecken Sie,
+                wie Sie souverän und authentisch online wirken.
               </p>
             </div>
             <a
@@ -73,10 +73,10 @@ const Footer = () => {
             {/* Right: Newsletter */}
             <div className="max-w-sm">
               <h3 className="font-display text-xl font-bold text-primary-foreground">
-                Bleib in Kontakt
+                Bleiben Sie in Kontakt
               </h3>
               <p className="mt-2 font-body text-sm text-primary-foreground/60">
-                Erhalte Tipps, Impulse und Updates rund um professionelles Online-Auftreten.
+                Erhalten Sie Tipps, Impulse und Updates rund um professionelles Online-Auftreten.
               </p>
               <form
                 onSubmit={(e) => e.preventDefault()}

@@ -30,11 +30,11 @@ const HeroSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!firstName.trim() || !lastName.trim() || !email.trim()) {
-      toast({ title: "Bitte fülle alle Felder aus.", variant: "destructive" });
+      toast({ title: "Bitte füllen Sie alle Felder aus.", variant: "destructive" });
       return;
     }
     if (!privacy) {
-      toast({ title: "Bitte akzeptiere die Datenschutzbestimmungen.", variant: "destructive" });
+      toast({ title: "Bitte akzeptieren Sie die Datenschutzbestimmungen.", variant: "destructive" });
       return;
     }
     setIsSubmitting(true);
@@ -64,7 +64,7 @@ const HeroSection = () => {
               <span className="text-secondary">Online Wirken</span>
             </h1>
             <p className="mx-auto mb-10 max-w-md font-body text-base leading-relaxed text-primary-foreground/75 sm:text-lg lg:mx-0 lg:max-w-lg">
-              Werde souverän, klar und wirkungsvoll in jeder Online-Veranstaltung.
+              Werden Sie souverän, klar und wirkungsvoll in jeder Online-Veranstaltung.
               Kostenloser Impuls-Newsletter + Checkliste für Coaches, Trainer:innen, Führungskräfte und alle, die online überzeugen wollen.
             </p>
 
@@ -142,7 +142,7 @@ const HeroSection = () => {
             className="mx-auto max-w-3xl py-16 sm:py-24"
           >
             <h2 className="mb-8 text-center font-display text-2xl font-bold text-primary-foreground sm:text-3xl lg:text-4xl">
-              Lerne Elisabeth kennen
+              Lernen Sie Elisabeth kennen
             </h2>
             <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-video border-2 border-primary-foreground/10">
               <div className="flex h-full w-full items-center justify-center bg-foreground/90">
@@ -183,8 +183,8 @@ const HeroSection = () => {
                   Vielen Dank!
                 </DialogTitle>
                 <DialogDescription className="mt-2 font-body text-muted-foreground">
-                  Bitte prüfe dein E-Mail-Postfach und bestätige deine Anmeldung,
-                  um deine kostenlose Checkliste zu erhalten.
+                   Bitte prüfen Sie Ihr E-Mail-Postfach und bestätigen Sie Ihre Anmeldung,
+                   um Ihre kostenlose Checkliste zu erhalten.
                 </DialogDescription>
               </DialogHeader>
               <Button
@@ -208,7 +208,7 @@ const HeroSection = () => {
                   Checkliste + Newsletter sichern
                 </DialogTitle>
                 <DialogDescription className="font-body text-muted-foreground">
-                  Melde dich an und erhalte deine kostenlose Checkliste „Dein perfekter Start in jedes Online-Meeting" direkt in dein Postfach.
+                  Melden Sie sich an und erhalten Sie Ihre kostenlose Checkliste „Ihr perfekter Start in jedes Online-Meeting" direkt in Ihr Postfach.
                 </DialogDescription>
               </DialogHeader>
               <form onSubmit={handleSubmit} className="mt-2 space-y-4">
