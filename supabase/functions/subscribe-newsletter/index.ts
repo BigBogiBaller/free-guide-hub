@@ -68,18 +68,39 @@ Deno.serve(async (req) => {
     };
     console.log("Sending to Brevo:", JSON.stringify(requestBody));
 
-    const brevoResponse = await fetch("https://api.brevo.com/v3/contacts", {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "content-type": "application/json",
-        "api-key": BREVO_API_KEY,
-      },
-      body: JSON.stringify(requestBody),
-    });
+    const sendToBrevo = async (body: Record<string, unknown>) => {
+      console.log("Sending to Brevo:", JSON.stringify(body));
+      const res = await fetch("https://api.brevo.com/v3/contacts", {
+        method: "POST",
+        headers: {
+          "accept": "application/json",
+          "content-type": "application/json",
+          "api-key": BREVO_API_KEY,
+        },
+        body: JSON.stringify(body),
+      });
+      const text = await res.text();
+      console.log("Brevo response status:", res.status, "body:", text);
+      return { res, text };
+    };
 
-    const responseText = await brevoResponse.text();
-    console.log("Brevo response status:", brevoResponse.status, "body:", responseText);
+    let { res: brevoResponse, text: responseText } = await sendToBrevo(requestBody);
+
+    // If Brevo rejects the phone number, retry without SMS
+    if (!brevoResponse.ok) {
+      let errorData: Record<string, unknown> = {};
+      try { errorData = JSON.parse(responseText); } catch { /* ignore */ }
+
+      if (
+        String(errorData?.message).toLowerCase().includes("invalid phone") &&
+        requestBody.attributes.SMS
+      ) {
+        console.log("Retrying without SMS attribute due to invalid phone number");
+        const { SMS: _, ...cleanAttributes } = requestBody.attributes;
+        const retryBody = { ...requestBody, attributes: cleanAttributes };
+        ({ res: brevoResponse, text: responseText } = await sendToBrevo(retryBody));
+      }
+    }
 
     if (!brevoResponse.ok) {
       let errorData: Record<string, unknown> = {};
