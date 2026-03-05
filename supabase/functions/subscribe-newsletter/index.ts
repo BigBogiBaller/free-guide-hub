@@ -10,11 +10,18 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const { firstName, email } = await req.json();
+    const { firstName, lastName, email } = await req.json();
 
     // Validate inputs
     if (!firstName || typeof firstName !== "string" || firstName.trim().length === 0 || firstName.length > 100) {
       return new Response(JSON.stringify({ error: "Ungültiger Vorname." }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (!lastName || typeof lastName !== "string" || lastName.trim().length === 0 || lastName.length > 100) {
+      return new Response(JSON.stringify({ error: "Ungültiger Nachname." }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -46,7 +53,7 @@ Deno.serve(async (req) => {
       },
       body: JSON.stringify({
         email: email.trim().toLowerCase(),
-        attributes: { FIRSTNAME: firstName.trim() },
+        attributes: { FIRSTNAME: firstName.trim(), LASTNAME: lastName.trim() },
         listIds: [3],
         updateEnabled: true,
       }),
