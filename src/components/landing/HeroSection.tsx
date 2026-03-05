@@ -21,6 +21,7 @@ const HeroSection = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [privacy, setPrivacy] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -53,7 +54,7 @@ const HeroSection = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ firstName: firstName.trim(), lastName: lastName.trim(), email: email.trim() }),
+          body: JSON.stringify({ firstName: firstName.trim(), lastName: lastName.trim(), phone: phone.trim(), email: email.trim() }),
         }
       );
       const data = await res.json();
@@ -221,6 +222,7 @@ const HeroSection = () => {
                   setIsSuccess(false);
                   setFirstName("");
                   setLastName("");
+                  setPhone("");
                   setEmail("");
                   setPrivacy(false);
                 }}
@@ -252,6 +254,14 @@ const HeroSection = () => {
                   onChange={(e) => setLastName(e.target.value)}
                   className="h-12 rounded-xl bg-card font-body text-base"
                   maxLength={100}
+                />
+                <Input
+                  type="tel"
+                  placeholder="Telefonnummer (optional)"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="h-12 rounded-xl bg-card font-body text-base"
+                  maxLength={20}
                 />
                 <Input
                   type="email"
