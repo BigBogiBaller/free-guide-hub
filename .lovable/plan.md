@@ -1,49 +1,24 @@
 
 
-# Brevo Newsletter-Integration
+## Problem
 
-Listen-ID: **3** -- notiert.
+An **3 Stellen** fehlt der Nachname (`lastName`):
 
-## Was wird gebaut
+1. **HeroSection.tsx, Zeile 56:** `body: JSON.stringify({ firstName, email })` -- `lastName` fehlt
+2. **NewsletterSection.tsx, Zeile 42:** `body: { firstName, email }` -- `lastName` fehlt
+3. **Edge Function, Zeile 49:** Brevo-Attribute nur `{ FIRSTNAME }` -- `LASTNAME` fehlt, und `lastName` wird nicht aus dem Request gelesen
 
-### 1. Brevo API-Key als Secret speichern
-- Den API-Key `xkeysib-2a10b9d3e515...` sicher als `BREVO_API_KEY` Secret speichern (wird über das Secret-Tool angefordert)
+## Änderungen
 
-### 2. Edge Function: `subscribe-newsletter`
-Neue Datei: `supabase/functions/subscribe-newsletter/index.ts`
+### 1. Edge Function (`supabase/functions/subscribe-newsletter/index.ts`)
+- `lastName` aus dem Request-Body lesen und validieren (gleiche Regeln wie `firstName`)
+- Brevo-Attribute erweitern: `attributes: { FIRSTNAME: firstName.trim(), LASTNAME: lastName.trim() }`
 
-- Empfängt `firstName` und `email` per POST
-- Validiert Eingaben (E-Mail-Format, Länge)
-- Erstellt Kontakt in Brevo via `POST https://api.brevo.com/v3/contacts`
-  - Setzt `FIRSTNAME` Attribut
-  - Ordnet Kontakt der **Liste 3** zu
-  - Aktiviert Double-Opt-In (`DOI`) via Brevo Template
-- CORS-Headers für Browser-Zugriff
-- Fehlerbehandlung (doppelter Kontakt, ungültige E-Mail etc.)
+### 2. HeroSection.tsx (Zeile 56)
+- Body ändern zu: `{ firstName: firstName.trim(), lastName: lastName.trim(), email: email.trim() }`
 
-Config in `supabase/config.toml`:
-```toml
-[functions.subscribe-newsletter]
-verify_jwt = false
-```
+### 3. NewsletterSection.tsx (Zeile 42)
+- Body ändern zu: `{ firstName: firstName.trim(), lastName: lastName.trim(), email: email.trim() }`
 
-### 3. Frontend: `NewsletterSection.tsx` anpassen
-- Die simulierte `setTimeout`-Logik durch einen echten Aufruf der Edge Function ersetzen
-- Fehlerbehandlung mit Toast-Meldungen bei API-Fehlern
-- Erfolgsanzeige bleibt wie bisher
-
-## Ablauf
-```text
-Formular → Edge Function → Brevo API (Kontakt + Liste 3)
-                              ↓
-                   Brevo sendet Double-Opt-In Mail
-                              ↓
-                   Nutzer bestätigt → Automation startet
-                              ↓
-                   E-Mail-Sequenz läuft automatisch
-```
-
-## Was du in Brevo noch einrichten musst
-- **Automation**: Trigger = "Kontakt wird zur Liste 3 hinzugefügt" → E-Mail mit Checkliste senden → Follow-up E-Mails
-- **Double-Opt-In Template** konfigurieren (unter Kontakte → Einstellungen)
+Danach werden Vor- und Nachname korrekt als Kontakt-Attribute in Brevo gespeichert.
 
