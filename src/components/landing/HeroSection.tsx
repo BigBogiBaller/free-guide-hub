@@ -47,8 +47,26 @@ const HeroSection = () => {
       return;
     }
     setIsSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setIsSuccess(true);
+    try {
+      const res = await fetch(
+        `https://${import.meta.env.VITE_SUPABASE_PROJECT_ID}.supabase.co/functions/v1/subscribe-newsletter`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ firstName: firstName.trim(), email: email.trim() }),
+        }
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        toast({ title: data.error || "Anmeldung fehlgeschlagen.", variant: "destructive" });
+        setIsSubmitting(false);
+        return;
+      }
+      setIsSuccess(true);
+    } catch (err) {
+      console.error("Newsletter error:", err);
+      toast({ title: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.", variant: "destructive" });
+    }
     setIsSubmitting(false);
   };
 
