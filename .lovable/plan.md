@@ -2,23 +2,29 @@
 
 ## Problem
 
-An **3 Stellen** fehlt der Nachname (`lastName`):
+Die Brevo-Attribute heißen in deinem Konto `VORNAME`, `NACHNAME` und `SMS` — aber der Code sendet sie aktuell als `FIRSTNAME` und `LASTNAME`. Deshalb werden sie von Brevo ignoriert und nicht gespeichert.
 
-1. **HeroSection.tsx, Zeile 56:** `body: JSON.stringify({ firstName, email })` -- `lastName` fehlt
-2. **NewsletterSection.tsx, Zeile 42:** `body: { firstName, email }` -- `lastName` fehlt
-3. **Edge Function, Zeile 49:** Brevo-Attribute nur `{ FIRSTNAME }` -- `LASTNAME` fehlt, und `lastName` wird nicht aus dem Request gelesen
+Zusätzlich wird noch kein Telefonnummer-Feld abgefragt.
 
 ## Änderungen
 
-### 1. Edge Function (`supabase/functions/subscribe-newsletter/index.ts`)
-- `lastName` aus dem Request-Body lesen und validieren (gleiche Regeln wie `firstName`)
-- Brevo-Attribute erweitern: `attributes: { FIRSTNAME: firstName.trim(), LASTNAME: lastName.trim() }`
+### 1. Edge Function: Attribut-Namen korrigieren + Telefonnummer hinzufügen
+**Datei:** `supabase/functions/subscribe-newsletter/index.ts`
+- `phone` aus dem Request-Body lesen (optional, nicht required)
+- Attribut-Mapping ändern: `{ VORNAME: firstName.trim(), NACHNAME: lastName.trim(), SMS: phone?.trim() || undefined }`
 
-### 2. HeroSection.tsx (Zeile 56)
-- Body ändern zu: `{ firstName: firstName.trim(), lastName: lastName.trim(), email: email.trim() }`
+### 2. HeroSection.tsx: Telefonnummer-Feld hinzufügen
+- Neues State `phone` + Input-Feld für Telefonnummer (optional)
+- Im Body mitsenden: `{ firstName, lastName, phone, email }`
 
-### 3. NewsletterSection.tsx (Zeile 42)
-- Body ändern zu: `{ firstName: firstName.trim(), lastName: lastName.trim(), email: email.trim() }`
+### 3. NewsletterSection.tsx: Telefonnummer-Feld hinzufügen
+- Neues State `phone` + Input-Feld für Telefonnummer (optional)
+- Im Body mitsenden: `{ firstName, lastName, phone, email }`
 
-Danach werden Vor- und Nachname korrekt als Kontakt-Attribute in Brevo gespeichert.
+### Zusammenfassung
+| Vorher | Nachher |
+|---|---|
+| `FIRSTNAME` | `VORNAME` |
+| `LASTNAME` | `NACHNAME` |
+| — | `SMS` (Telefonnummer, optional) |
 
