@@ -60,6 +60,14 @@ Deno.serve(async (req) => {
       attributes.SMS = phone.trim();
     }
 
+    const requestBody = {
+      email: email.trim().toLowerCase(),
+      attributes,
+      listIds: [3],
+      updateEnabled: true,
+    };
+    console.log("Sending to Brevo:", JSON.stringify(requestBody));
+
     const brevoResponse = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
       headers: {
@@ -67,16 +75,15 @@ Deno.serve(async (req) => {
         "content-type": "application/json",
         "api-key": BREVO_API_KEY,
       },
-      body: JSON.stringify({
-        email: email.trim().toLowerCase(),
-        attributes,
-        listIds: [3],
-        updateEnabled: true,
-      }),
+      body: JSON.stringify(requestBody),
     });
 
+    const responseText = await brevoResponse.text();
+    console.log("Brevo response status:", brevoResponse.status, "body:", responseText);
+
     if (!brevoResponse.ok) {
-      const errorData = await brevoResponse.json().catch(() => ({}));
+      let errorData: Record<string, unknown> = {};
+      try { errorData = JSON.parse(responseText); } catch { /* ignore */ }
       console.error("Brevo API error:", brevoResponse.status, errorData);
 
       // Duplicate contact is still a success for the user
