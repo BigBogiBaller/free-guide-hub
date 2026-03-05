@@ -79,7 +79,17 @@ const Footer = () => {
                 Erhalten Sie Tipps, Impulse und Updates rund um professionelles Online-Auftreten.
               </p>
               <form
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const input = e.currentTarget.querySelector("input[type='email']") as HTMLInputElement;
+                  const emailValue = input?.value?.trim();
+                  if (emailValue) {
+                    window.dispatchEvent(new CustomEvent("open-newsletter-dialog", { detail: { email: emailValue } }));
+                    input.value = "";
+                    // Scroll to top so user sees the dialog
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
                 className="mt-4 flex items-center rounded-full border border-primary-foreground/20 bg-primary-foreground/5 pl-5 pr-1"
               >
                 <input
