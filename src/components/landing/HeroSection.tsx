@@ -246,7 +246,7 @@ const HeroSection = () => {
                     className="cursor-pointer font-body text-sm leading-relaxed text-muted-foreground"
                   >
                     Ich akzeptiere die{" "}
-                    <a href="#" className="text-accent underline hover:no-underline">
+                    <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-accent underline hover:no-underline">
                       Datenschutzbestimmungen
                     </a>
                     . Abmeldung jederzeit möglich.
