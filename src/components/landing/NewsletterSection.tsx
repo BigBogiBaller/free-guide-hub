@@ -16,6 +16,7 @@ const checklistItems = [
 
 const NewsletterSection = () => {
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [privacy, setPrivacy] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,7 +26,7 @@ const NewsletterSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!firstName.trim() || !email.trim()) {
+    if (!firstName.trim() || !lastName.trim() || !email.trim()) {
       toast({ title: "Bitte füllen Sie alle Felder aus.", variant: "destructive" });
       return;
     }
@@ -97,9 +98,6 @@ const NewsletterSection = () => {
 
             {/* Left: Leadmagnet info */}
             <div>
-              
-
-
               <h2 className="mb-3 font-display text-2xl font-bold text-foreground lg:text-3xl">
                 Kostenlose Checkliste: „Ihr perfekter Start in jedes Online-Meeting"
               </h2>
@@ -132,6 +130,13 @@ const NewsletterSection = () => {
                   placeholder="Ihr Vorname"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
+                  className="h-12 rounded-xl bg-card font-body text-base"
+                  maxLength={100} />
+
+                <Input
+                  placeholder="Ihr Nachname"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                   className="h-12 rounded-xl bg-card font-body text-base"
                   maxLength={100} />
 
