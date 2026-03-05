@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Play, Check, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,6 +26,15 @@ const HeroSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const handler = (e: CustomEvent<{ email: string }>) => {
+      setEmail(e.detail.email);
+      setDialogOpen(true);
+    };
+    window.addEventListener("open-newsletter-dialog", handler as EventListener);
+    return () => window.removeEventListener("open-newsletter-dialog", handler as EventListener);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
