@@ -200,7 +200,7 @@ const HeroSection = () => {
 
       {/* Newsletter Popup Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="mx-4 max-w-md rounded-2xl sm:mx-auto">
+        <DialogContent className="max-w-md">
           {isSuccess ? (
             <div className="py-6 text-center">
               <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/20">
