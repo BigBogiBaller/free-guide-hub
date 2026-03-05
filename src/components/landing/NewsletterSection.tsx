@@ -17,6 +17,7 @@ const checklistItems = [
 const NewsletterSection = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [privacy, setPrivacy] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,7 +40,7 @@ const NewsletterSection = () => {
 
     try {
       const { data, error } = await supabase.functions.invoke("subscribe-newsletter", {
-        body: { firstName: firstName.trim(), lastName: lastName.trim(), email: email.trim() },
+        body: { firstName: firstName.trim(), lastName: lastName.trim(), phone: phone.trim(), email: email.trim() },
       });
 
       if (error) {
@@ -139,6 +140,14 @@ const NewsletterSection = () => {
                   onChange={(e) => setLastName(e.target.value)}
                   className="h-12 rounded-xl bg-card font-body text-base"
                   maxLength={100} />
+
+                <Input
+                  type="tel"
+                  placeholder="Ihre Telefonnummer (optional)"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="h-12 rounded-xl bg-card font-body text-base"
+                  maxLength={20} />
 
                 <Input
                   type="email"

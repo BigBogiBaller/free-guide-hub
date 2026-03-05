@@ -10,7 +10,7 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const { firstName, lastName, email } = await req.json();
+    const { firstName, lastName, email, phone } = await req.json();
 
     // Validate inputs
     if (!firstName || typeof firstName !== "string" || firstName.trim().length === 0 || firstName.length > 100) {
@@ -35,6 +35,14 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Validate phone (optional)
+    if (phone && (typeof phone !== "string" || phone.length > 20)) {
+      return new Response(JSON.stringify({ error: "Ungültige Telefonnummer." }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const BREVO_API_KEY = Deno.env.get("BREVO_API_KEY");
     if (!BREVO_API_KEY) {
       console.error("BREVO_API_KEY not configured");
@@ -42,6 +50,14 @@ Deno.serve(async (req) => {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
+    }
+
+    const attributes: Record<string, string> = {
+      VORNAME: firstName.trim(),
+      NACHNAME: lastName.trim(),
+    };
+    if (phone?.trim()) {
+      attributes.SMS = phone.trim();
     }
 
     const brevoResponse = await fetch("https://api.brevo.com/v3/contacts", {
@@ -53,7 +69,7 @@ Deno.serve(async (req) => {
       },
       body: JSON.stringify({
         email: email.trim().toLowerCase(),
-        attributes: { FIRSTNAME: firstName.trim(), LASTNAME: lastName.trim() },
+        attributes,
         listIds: [3],
         updateEnabled: true,
       }),
