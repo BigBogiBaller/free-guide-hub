@@ -131,10 +131,10 @@ const HeroSection = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-1.5">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} className="h-4 w-4 fill-accent text-accent" />
-                ))}
+               <div className="flex items-center gap-1.5">
+                 {[1, 2, 3, 4, 5].map((i) => (
+                   <Star key={i} className="h-4 w-4 fill-stars text-stars" />
+                 ))}
                 <span className="ml-1 font-body text-sm text-primary-foreground/70">
                   20+ Jahre Erfahrung
                 </span>
