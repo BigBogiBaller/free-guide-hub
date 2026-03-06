@@ -63,6 +63,7 @@ export default {
         anthracite: "hsl(var(--anthracite))",
         "brand-blue": "hsl(var(--brand-blue))",
         "light-blue": "hsl(var(--light-blue))",
+        stars: "hsl(var(--stars))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
