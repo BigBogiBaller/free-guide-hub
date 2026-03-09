@@ -176,8 +176,7 @@ const HeroSection = () => {
               <video
                 controls
                 playsInline
-                preload="metadata"
-                crossOrigin="anonymous"
+                preload="auto"
                 className="h-full w-full object-cover"
               >
                 <source src="/videos/elisabeth-begruessung.mp4" type="video/mp4" />
