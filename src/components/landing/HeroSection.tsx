@@ -177,9 +177,17 @@ const HeroSection = () => {
                 controls
                 playsInline
                 preload="metadata"
+                crossOrigin="anonymous"
                 className="h-full w-full object-cover"
               >
                 <source src="/videos/elisabeth-begruessung.mp4" type="video/mp4" />
+                <track
+                  kind="captions"
+                  src="/videos/elisabeth-begruessung.vtt"
+                  srcLang="de"
+                  label="Deutsch"
+                  default
+                />
                 Ihr Browser unterstützt kein Video.
               </video>
             </div>
