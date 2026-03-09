@@ -173,16 +173,15 @@ const HeroSection = () => {
               Lernen Sie Elisabeth kennen
             </h2>
             <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-video border-2 border-primary-foreground/10">
-              <div className="flex h-full w-full items-center justify-center bg-foreground/90">
-                <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg transition-transform hover:scale-110 cursor-pointer sm:h-20 sm:w-20">
-                    <Play className="h-7 w-7 ml-1 sm:h-8 sm:w-8" />
-                  </div>
-                  <p className="font-body text-sm text-primary-foreground/80 sm:text-base">
-                    Video von Elisabeth ansehen
-                  </p>
-                </div>
-              </div>
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                className="h-full w-full object-cover"
+              >
+                <source src="/videos/elisabeth-begruessung.mp4" type="video/mp4" />
+                Ihr Browser unterstützt kein Video.
+              </video>
             </div>
             <div className="mt-8 text-center">
               <Button
