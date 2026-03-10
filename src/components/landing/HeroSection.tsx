@@ -173,14 +173,21 @@ const HeroSection = () => {
               Lernen Sie Elisabeth kennen
             </h2>
             <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-video border-2 border-primary-foreground/10">
-              <iframe
-                src="https://sjpdevelopmentgmbh-my.sharepoint.com/personal/ebk_sjpdevelopment_ch/_layouts/15/embed.aspx?UniqueId=1fa2e81f-c749-4041-aca1-2123557b2589&embed=%7B%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
-                className="h-full w-full"
-                frameBorder="0"
-                scrolling="no"
-                allowFullScreen
-                title="Video Begrüssung LP 111-.mp4"
-              />
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                className="h-full w-full object-cover"
+              >
+                <source src="/videos/elisabeth-begruessung.mp4" type="video/mp4" />
+                <track
+                  kind="subtitles"
+                  src="/videos/elisabeth-begruessung.vtt"
+                  srcLang="de"
+                  label="Deutsch"
+                />
+                Ihr Browser unterstützt kein Video.
+              </video>
             </div>
             <div className="mt-8 text-center">
               <Button
