@@ -173,22 +173,14 @@ const HeroSection = () => {
               Lernen Sie Elisabeth kennen
             </h2>
             <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-video border-2 border-primary-foreground/10">
-              <video
-                controls
-                playsInline
-                preload="auto"
-                className="h-full w-full object-cover"
-              >
-                <source src="/videos/elisabeth-begruessung.mp4" type="video/mp4" />
-                <track
-                  kind="captions"
-                  src="/videos/elisabeth-begruessung.vtt"
-                  srcLang="de"
-                  label="Deutsch"
-                  default
-                />
-                Ihr Browser unterstützt kein Video.
-              </video>
+              <iframe
+                src="https://player.vimeo.com/video/1172114352?h=349d8de82c"
+                className="h-full w-full"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                allowFullScreen
+                title="Elisabeth Begrüßung"
+              />
             </div>
             <div className="mt-8 text-center">
               <Button
