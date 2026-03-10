@@ -179,7 +179,7 @@ const HeroSection = () => {
                 preload="metadata"
                 className="h-full w-full object-cover"
               >
-                <source src="/videos/elisabeth-begruessung.mp4" type="video/mp4" />
+                <source src="https://aqifvotqvtwhsgigodau.supabase.co/storage/v1/object/public/videos/elisabeth-begruessung.mp4" type="video/mp4" />
                 <track
                   kind="subtitles"
                   src="/videos/elisabeth-begruessung.vtt"
