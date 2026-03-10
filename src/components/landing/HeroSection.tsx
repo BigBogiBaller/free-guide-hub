@@ -174,12 +174,12 @@ const HeroSection = () => {
             </h2>
             <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-video border-2 border-primary-foreground/10">
               <iframe
-                src="https://player.vimeo.com/video/1172114352?h=349d8de82c"
+                src="https://sjpdevelopmentgmbh-my.sharepoint.com/personal/ebk_sjpdevelopment_ch/_layouts/15/embed.aspx?UniqueId=297f49dd-be1c-4065-8405-c4f20b99015a&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
                 className="h-full w-full"
                 frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                scrolling="no"
                 allowFullScreen
-                title="Elisabeth Begrüßung"
+                title="Video Begrüssung LP 111-.mp4"
               />
             </div>
             <div className="mt-8 text-center">
