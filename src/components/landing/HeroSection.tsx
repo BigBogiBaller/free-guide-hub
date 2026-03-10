@@ -174,7 +174,7 @@ const HeroSection = () => {
             </h2>
             <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-video border-2 border-primary-foreground/10">
               <iframe
-                src="https://sjpdevelopmentgmbh-my.sharepoint.com/personal/ebk_sjpdevelopment_ch/_layouts/15/embed.aspx?UniqueId=297f49dd-be1c-4065-8405-c4f20b99015a&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
+                src="https://sjpdevelopmentgmbh-my.sharepoint.com/personal/ebk_sjpdevelopment_ch/_layouts/15/embed.aspx?UniqueId=1fa2e81f-c749-4041-aca1-2123557b2589&embed=%7B%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
                 className="h-full w-full"
                 frameBorder="0"
                 scrolling="no"
