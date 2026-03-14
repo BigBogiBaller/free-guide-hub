@@ -114,6 +114,8 @@ const TestimonialsSection = () => {
                     >
                       {t.source} ↗
                     </a>
+                  ) : t.source === "LinkedIn" ? (
+                    <img src={linkedinLogo} alt="LinkedIn" className="h-5 w-5 rounded-sm" />
                   ) : (
                     <span className="font-body text-xs text-muted-foreground">
                       {t.source}
