@@ -3,6 +3,7 @@ import { Star, StarHalf } from "lucide-react";
 import avatarSubramanya from "@/assets/avatar-subramanya.png";
 import avatarMaria from "@/assets/avatar-maria.png";
 import linkedinLogo from "@/assets/linkedin-logo.png";
+import provenexpertLogo from "@/assets/provenexpert-logo.png";
 
 const testimonials = [
   {
@@ -105,17 +106,18 @@ const TestimonialsSection = () => {
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <StarRating rating={t.stars} />
-                  {t.sourceLink ? (
+                  {t.source === "LinkedIn" ? (
+                    <img src={linkedinLogo} alt="LinkedIn" className="h-5 w-5 rounded-[3px]" />
+                  ) : t.source === "ProvenExpert" ? (
                     <a
                       href={t.sourceLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-body text-xs text-muted-foreground hover:text-primary transition-colors"
+                      className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
                     >
-                      {t.source} ↗
+                      <img src={provenexpertLogo} alt="ProvenExpert" className="h-5 w-auto" />
+                      <span className="text-muted-foreground text-sm">↗</span>
                     </a>
-                  ) : t.source === "LinkedIn" ? (
-                    <img src={linkedinLogo} alt="LinkedIn" className="h-5 w-5 rounded-sm" />
                   ) : (
                     <span className="font-body text-xs text-muted-foreground">
                       {t.source}
