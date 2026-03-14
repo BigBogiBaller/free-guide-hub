@@ -1,41 +1,60 @@
 import { motion } from "framer-motion";
-import avatar1 from "@/assets/avatar-1.jpg";
-import avatar2 from "@/assets/avatar-2.jpg";
-import avatar3 from "@/assets/avatar-3.jpg";
+import { Star, StarHalf } from "lucide-react";
+import avatarSubramanya from "@/assets/avatar-subramanya.png";
+import avatarMaria from "@/assets/avatar-maria.png";
 
 const testimonials = [
   {
     quote:
-      "Seit dem Training fühle ich mich endlich sicher vor der Kamera. Meine Online-Meetings laufen jetzt ganz anders — souverän und authentisch.",
-    name: "Sandra M.",
-    role: "Teamleiterin",
-    avatar: avatar1,
+      "I had the pleasure of working with Elisabeth in her role as a Management Assistant, and I was consistently impressed by her dedication and approach to work. She was always proactive, ready to help, and truly service-oriented. Her expertise in IT was particularly valuable, and she often took on the role of a trainer, sharing her knowledge with others in a clear and approachable way.",
+    name: "Subramanya Matam",
+    source: "LinkedIn",
+    avatar: avatarSubramanya,
+    stars: 5,
   },
   {
     quote:
-      "Elisabeth hat mir gezeigt, wie ich online wirklich wirke. Das Feedback war ehrlich, konkret und sofort umsetzbar.",
-    name: "Thomas K.",
-    role: "Berater",
-    avatar: avatar2,
+      "Elisabeth has a great methodology for planning and executing projects on time and with truly successful results. She has a great ability to communicate and explain her requirements.",
+    name: "Maria Eugenia",
+    source: "LinkedIn",
+    avatar: avatarMaria,
+    stars: 5,
   },
   {
     quote:
-      "Ich hätte nie gedacht, dass man seine Online-Präsenz so stark verbessern kann. Jetzt bekomme ich regelmäßig positives Feedback.",
-    name: "Julia R.",
-    role: "Projektmanagerin",
-    avatar: avatar3,
+      "Sie war stets freundlich, motivierend und fachlich sehr kompetent. Sie geht auf die Fragen und Bedürfnisse der Teilnehmer ein und holt die Teilnehmer bei deren Kenntnisstand ab. Sie konnte einen sehr guten Überblick der einzelnen Programme und deren Verzahnung vermitteln. Auch in hektischen Situationen bewahrte sie Ruhe und agierte sehr selbständig immer das Seminarziel im Blick.",
+    name: "Anonym",
+    source: "ProvenExpert",
+    sourceLink: "https://www.provenexpert.com/de-de/elisabeth-brommer-kern/",
+    avatar: null,
+    stars: 5,
   },
   {
     quote:
-      "Das Training war ein echtes Aha-Erlebnis. Endlich weiß ich, worauf es bei virtuellen Präsentationen ankommt.",
-    name: "Markus L.",
-    role: "Geschäftsführer",
-    avatar: avatar1,
+      "Hervorragende Betreuung und kompetente Schulung. Absolut empfehlenswert.",
+    name: "Anonym",
+    source: "ProvenExpert",
+    sourceLink: "https://www.provenexpert.com/de-de/elisabeth-brommer-kern/",
+    avatar: null,
+    stars: 4.8,
   },
 ];
 
 // Double the array for seamless loop
 const doubledTestimonials = [...testimonials, ...testimonials];
+
+const StarRating = ({ rating }: { rating: number }) => {
+  const fullStars = Math.floor(rating);
+  const hasHalf = rating % 1 >= 0.5;
+  return (
+    <div className="flex gap-0.5">
+      {Array.from({ length: fullStars }).map((_, i) => (
+        <Star key={i} className="h-4 w-4 fill-stars text-stars" />
+      ))}
+      {hasHalf && <StarHalf className="h-4 w-4 fill-stars text-stars" />}
+    </div>
+  );
+};
 
 const TestimonialsSection = () => {
   return (
@@ -49,13 +68,12 @@ const TestimonialsSection = () => {
           className="mb-12"
         >
           <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Was Teilnehmende
+            Was Kunden & Teilnehmende
             <br />
             <span className="text-primary">sagen</span>
           </h2>
           <p className="mt-4 max-w-md font-body text-base text-muted-foreground sm:text-lg">
-            Stimmen von Menschen, die ihre Online-Wirkung nachhaltig
-            verbessert haben.
+            Echte Stimmen von Menschen, mit denen Elisabeth zusammengearbeitet hat.
           </p>
         </motion.div>
       </div>
@@ -81,28 +99,50 @@ const TestimonialsSection = () => {
           {doubledTestimonials.map((t, i) => (
             <div
               key={i}
-              className="w-[320px] flex-shrink-0 rounded-2xl border border-border bg-card p-6 sm:p-8 flex flex-col justify-between"
+              className="w-[340px] flex-shrink-0 rounded-2xl border border-border bg-card p-6 sm:p-8 flex flex-col justify-between"
             >
               <div>
+                <div className="flex items-center justify-between mb-3">
+                  <StarRating rating={t.stars} />
+                  {t.sourceLink ? (
+                    <a
+                      href={t.sourceLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-body text-xs text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {t.source} ↗
+                    </a>
+                  ) : (
+                    <span className="font-body text-xs text-muted-foreground">
+                      {t.source}
+                    </span>
+                  )}
+                </div>
                 <span className="font-display text-5xl leading-none text-primary/30">
                   „
                 </span>
-                <p className="mt-2 font-body text-base leading-relaxed text-foreground">
+                <p className="mt-2 font-body text-sm leading-relaxed text-foreground">
                   {t.quote}
                 </p>
               </div>
               <div className="mt-8 flex items-center gap-3">
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  className="h-10 w-10 rounded-full object-cover"
-                />
+                {t.avatar ? (
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    className="h-10 w-10 rounded-full object-cover"
+                  />
+                ) : (
+                  <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center">
+                    <span className="font-body text-sm font-semibold text-muted-foreground">
+                      {t.name.charAt(0)}
+                    </span>
+                  </div>
+                )}
                 <div>
                   <p className="font-body text-sm font-semibold text-foreground">
                     {t.name}
-                  </p>
-                  <p className="font-body text-xs text-muted-foreground">
-                    {t.role}
                   </p>
                 </div>
               </div>
