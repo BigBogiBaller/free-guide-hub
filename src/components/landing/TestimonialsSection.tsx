@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Star, StarHalf } from "lucide-react";
 import avatarSubramanya from "@/assets/avatar-subramanya.png";
 import avatarMaria from "@/assets/avatar-maria.png";
+import linkedinLogo from "@/assets/linkedin-logo.png";
 
 const testimonials = [
   {
@@ -113,6 +114,8 @@ const TestimonialsSection = () => {
                     >
                       {t.source} ↗
                     </a>
+                  ) : t.source === "LinkedIn" ? (
+                    <img src={linkedinLogo} alt="LinkedIn" className="h-5 w-5 rounded-sm" />
                   ) : (
                     <span className="font-body text-xs text-muted-foreground">
                       {t.source}
