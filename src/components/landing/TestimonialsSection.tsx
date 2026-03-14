@@ -3,6 +3,7 @@ import { Star, StarHalf } from "lucide-react";
 import avatarSubramanya from "@/assets/avatar-subramanya.png";
 import avatarMaria from "@/assets/avatar-maria.png";
 import linkedinLogo from "@/assets/linkedin-logo.png";
+import provenexpertLogo from "@/assets/provenexpert-logo.png";
 
 const testimonials = [
   {
