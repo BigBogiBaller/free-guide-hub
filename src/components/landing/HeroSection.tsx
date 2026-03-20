@@ -220,6 +220,12 @@ const HeroSection = () => {
                    um Ihre kostenlose Checkliste zu erhalten.
                 </DialogDescription>
               </DialogHeader>
+              <div className="mt-4 rounded-xl bg-muted p-4 text-left">
+                <p className="font-body text-sm leading-relaxed text-foreground/80">
+                  <span className="mr-1">📌</span> <strong>Damit Sie meine E-Mails immer erhalten:</strong> Falls diese Nachricht im Werbung- oder Spam-Ordner gelandet ist, verschieben Sie sie bitte in Ihren Posteingang und speichern Sie meine Adresse{" "}
+                  <span className="font-semibold text-foreground">ebk@sjpdevelopment.ch</span> in Ihren Kontakten.
+                </p>
+              </div>
               <Button
                 className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90"
                 onClick={() => {
