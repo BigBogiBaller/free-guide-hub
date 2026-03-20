@@ -76,10 +76,16 @@ const NewsletterSection = () => {
               <Check className="h-8 w-8" />
             </div>
             <h3 className="mb-3 font-display text-2xl font-bold">Vielen Dank!</h3>
-            <p className="font-body text-primary-foreground/90">
+            <p className="font-body text-primary-foreground/90 mb-5">
               Bitte prüfen Sie Ihr E-Mail-Postfach und bestätigen Sie Ihre Anmeldung,
               um Ihre kostenlose Checkliste zu erhalten.
             </p>
+            <div className="rounded-xl bg-primary-foreground/10 p-4 text-left">
+              <p className="font-body text-sm leading-relaxed text-primary-foreground/90">
+                <span className="mr-1">📌</span> <strong>Damit Sie meine E-Mails immer erhalten:</strong> Falls diese Nachricht im Werbung- oder Spam-Ordner gelandet ist, verschieben Sie sie bitte in Ihren Posteingang und speichern Sie meine Adresse{" "}
+                <span className="font-semibold text-primary-foreground">ebk@sjpdevelopment.ch</span> in Ihren Kontakten.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>);
