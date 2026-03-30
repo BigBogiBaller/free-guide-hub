@@ -131,35 +131,30 @@ const PricingSection = () => {
                 ))}
               </ul>
 
-              {plan.name === "Schnupper-Webinar" ? (
-                <Button
-                  onClick={() => setWebinarOpen(true)}
-                  className="w-full rounded-full text-base py-6 bg-secondary text-secondary-foreground hover:bg-secondary/80"
+              <Button
+                asChild
+                className={`w-full rounded-full text-base py-6 ${
+                  plan.highlighted
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                }`}
+              >
+                <a
+                  href={
+                    plan.name === "Schnupper-Webinar" || plan.name === "AKAD-Training"
+                      ? "https://www.sjpdevelopment.ch/termine.html"
+                      : "/buchen"
+                  }
+                  target={
+                    plan.name === "Schnupper-Webinar" || plan.name === "AKAD-Training" ? "_blank" : undefined
+                  }
+                  rel={
+                    plan.name === "Schnupper-Webinar" || plan.name === "AKAD-Training" ? "noopener noreferrer" : undefined
+                  }
                 >
                   {plan.cta}
-                </Button>
-              ) : (
-                <Button
-                  asChild
-                  className={`w-full rounded-full text-base py-6 ${
-                    plan.highlighted
-                      ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                  }`}
-                >
-                  <a
-                    href={
-                      plan.name === "AKAD-Training"
-                        ? "https://www.akad.ch/angebot/professionell-online-wirken-fit-fuer-die-zukunft-mit-future-skills/"
-                        : "/buchen"
-                    }
-                    target={plan.name === "AKAD-Training" ? "_blank" : undefined}
-                    rel={plan.name === "AKAD-Training" ? "noopener noreferrer" : undefined}
-                  >
-                    {plan.cta}
-                  </a>
-                </Button>
-              )}
+                </a>
+              </Button>
             </div>
           ))}
         </div>
