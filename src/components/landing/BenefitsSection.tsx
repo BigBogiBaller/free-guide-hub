@@ -2,12 +2,16 @@ import { motion } from "framer-motion";
 import { Zap, BookOpen, Sparkles, Brain, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+import { motion } from "framer-motion";
+import { Zap, BookOpen, Users, Brain, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
 const benefits = [
   {
     icon: Zap,
     title: "Klare, sofort umsetzbare Tipps",
     description:
-      "Kurz, prägnant und praxisnah — Impulse, die Sie direkt in Ihrem nächsten Online-Meeting anwenden können.",
+      "Kurz, prägnant und praxisnah — Impulse, die Sie direkt in Ihren nächsten Meetings und Calls anwenden können.",
   },
   {
     icon: BookOpen,
@@ -16,10 +20,10 @@ const benefits = [
       "Bewährte Übungen aus über 20 Jahren als Trainerin und aus meinem Buch \u201EProfessionell Online Wirken\u201C.",
   },
   {
-    icon: Sparkles,
-    title: "Impulse für deine Online-Wirkung",
+    icon: Users,
+    title: "Für Menschen mit Wirkung",
     description:
-      "Tipps für Stimme, Körpersprache, Mindset und Technik — damit deine Wirkung kein Zufall ist.",
+      "Inhalte für Fach- und Führungskräfte, Teams, HR und alle, die professioneller kommunizieren möchten.",
   },
   {
     icon: Brain,
