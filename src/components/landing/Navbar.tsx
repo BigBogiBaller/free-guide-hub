@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import logoSjp from "@/assets/logo-sjp-lotus.png";
 
 const navLinks = [
+  { label: "Home", href: "#" },
   { label: "Vorteile", href: "#vorteile" },
   { label: "Über mich", href: "#ueber-mich" },
   { label: "Newsletter", href: "#newsletter" },

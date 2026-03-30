@@ -1,12 +1,13 @@
 import Navbar from "@/components/landing/Navbar";
 import HeroSection from "@/components/landing/HeroSection";
 import BenefitsSection from "@/components/landing/BenefitsSection";
-import ForWenSection from "@/components/landing/ForWenSection";
+import WasErwartetSection from "@/components/landing/WasErwartetSection";
 import AboutSection from "@/components/landing/AboutSection";
 import NewsletterSection from "@/components/landing/NewsletterSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import PricingSection from "@/components/landing/PricingSection";
 import FAQSection from "@/components/landing/FAQSection";
+import VideoSection from "@/components/landing/VideoSection";
 import BookCallSection from "@/components/landing/BookCallSection";
 import Footer from "@/components/landing/Footer";
 
@@ -16,12 +17,13 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <BenefitsSection />
-      <ForWenSection />
+      <WasErwartetSection />
       <AboutSection />
       <TestimonialsSection />
       <PricingSection />
       <NewsletterSection />
       <FAQSection />
+      <VideoSection />
       <BookCallSection />
       <Footer />
     </main>

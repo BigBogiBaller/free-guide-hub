@@ -147,13 +147,6 @@ const NewsletterSection = () => {
                   className="h-12 rounded-xl bg-card font-body text-base"
                   maxLength={100} />
 
-                <Input
-                  type="tel"
-                  placeholder="Ihre Telefonnummer (optional)"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="h-12 rounded-xl bg-card font-body text-base"
-                  maxLength={20} />
 
                 <Input
                   type="email"

@@ -48,11 +48,10 @@ const BenefitsSection = () => {
             Warum dieser Newsletter?
           </p>
           <h2 className="mb-4 font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Mit meinem Impuls-Newsletter <span className="text-primary">erhalten Sie</span>
+            Mit meinem Newsletter <span className="text-primary">erhalten Sie</span>
           </h2>
           <p className="mx-auto max-w-2xl font-body text-base text-muted-foreground sm:text-lg">
-            Online sichtbar zu sein ist heute selbstverständlich — aber wirkungsvoll zu sein ist eine Kunst. 
-            Stimme, Körpersprache, Technik, Nervosität … irgendetwas passt nicht zusammen? Das ändern wir.
+            Mit meinem Newsletter erhalten Sie praxisnahe Impulse zu professionellem Auftreten, digitaler Zusammenarbeit und nachhaltigen Business-Meetings — kompakt, umsetzbar, regelmässig.
           </p>
         </motion.div>
 
