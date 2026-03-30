@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Zap, BookOpen, Sparkles, Brain, ArrowRight } from "lucide-react";
+import { Zap, BookOpen, Users, Brain, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const benefits = [
@@ -7,7 +7,7 @@ const benefits = [
     icon: Zap,
     title: "Klare, sofort umsetzbare Tipps",
     description:
-      "Kurz, prägnant und praxisnah — Impulse, die Sie direkt in Ihrem nächsten Online-Meeting anwenden können.",
+      "Kurz, prägnant und praxisnah — Impulse, die Sie direkt in Ihren nächsten Meetings und Calls anwenden können.",
   },
   {
     icon: BookOpen,
@@ -16,10 +16,10 @@ const benefits = [
       "Bewährte Übungen aus über 20 Jahren als Trainerin und aus meinem Buch \u201EProfessionell Online Wirken\u201C.",
   },
   {
-    icon: Sparkles,
-    title: "Impulse für deine Online-Wirkung",
+    icon: Users,
+    title: "Für Menschen mit Wirkung",
     description:
-      "Tipps für Stimme, Körpersprache, Mindset und Technik — damit deine Wirkung kein Zufall ist.",
+      "Inhalte für Fach- und Führungskräfte, Teams, HR und alle, die professioneller kommunizieren möchten.",
   },
   {
     icon: Brain,
@@ -44,11 +44,10 @@ const BenefitsSection = () => {
             Warum dieser Newsletter?
           </p>
           <h2 className="mb-4 font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Mit meinem Impuls-Newsletter <span className="text-primary">erhalten Sie</span>
+            Mit meinem Newsletter <span className="text-primary">erhalten Sie</span>
           </h2>
           <p className="mx-auto max-w-2xl font-body text-base text-muted-foreground sm:text-lg">
-            Online sichtbar zu sein ist heute selbstverständlich — aber wirkungsvoll zu sein ist eine Kunst. 
-            Stimme, Körpersprache, Technik, Nervosität … irgendetwas passt nicht zusammen? Das ändern wir.
+            Mit meinem Newsletter erhalten Sie praxisnahe Impulse zu professionellem Auftreten, digitaler Zusammenarbeit und nachhaltigen Business-Meetings — kompakt, umsetzbar, regelmässig.
           </p>
         </motion.div>
 
