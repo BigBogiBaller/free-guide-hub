@@ -17,28 +17,28 @@
     --popover: 0 0% 100%;
     --popover-foreground: 120 2% 20%;
 
-    /* Dunkelgrün as primary */
-    --primary: 144 32% 28%;
-    --primary-foreground: 36 33% 95%;
+    /* Sanftes Blau as primary */
+    --primary: 210 40% 38%;
+    --primary-foreground: 210 30% 97%;
 
-    /* Schilfgrün as secondary */
-    --secondary: 150 22% 80%;
-    --secondary-foreground: 120 2% 20%;
+    /* Helles Blau as secondary */
+    --secondary: 210 30% 88%;
+    --secondary-foreground: 210 20% 20%;
 
     /* Cream muted */
     --muted: 36 33% 92%;
-    --muted-foreground: 120 2% 40%;
+    --muted-foreground: 210 10% 40%;
 
     /* Blau as accent */
-    --accent: 214 61% 39%;
+    --accent: 210 50% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 150 15% 82%;
-    --input: 150 15% 82%;
-    --ring: 144 32% 28%;
+    --border: 210 20% 85%;
+    --input: 210 20% 85%;
+    --ring: 210 40% 38%;
 
     --radius: 0.75rem;
 
