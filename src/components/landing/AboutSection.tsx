@@ -69,7 +69,7 @@ const AboutSection = () => {
               className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-body font-semibold px-8"
               asChild
             >
-              <a href="https://sjpdevelopment.ch/ueber-mich/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.sjpdevelopment.ch/ueber-mich.html" target="_blank" rel="noopener noreferrer">
                 Mehr über mich erfahren
                 <ExternalLink className="ml-2 h-4 w-4" />
               </a>
