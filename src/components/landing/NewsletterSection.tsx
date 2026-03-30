@@ -40,7 +40,7 @@ const NewsletterSection = () => {
 
     try {
       const { data, error } = await supabase.functions.invoke("subscribe-newsletter", {
-        body: { firstName: firstName.trim(), lastName: lastName.trim(), phone: phone.trim(), email: email.trim() },
+        body: { firstName: firstName.trim(), lastName: lastName.trim(), email: email.trim() },
       });
 
       if (error) {
