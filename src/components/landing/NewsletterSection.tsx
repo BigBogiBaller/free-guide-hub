@@ -17,7 +17,7 @@ const checklistItems = [
 const NewsletterSection = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
+  
   const [email, setEmail] = useState("");
   const [privacy, setPrivacy] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
