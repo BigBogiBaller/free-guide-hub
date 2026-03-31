@@ -6,13 +6,11 @@ import elisabethPortrait3 from "@/assets/elisabeth-portrait-3.png";
 const BookCallSection = () => {
   return (
     <section className="relative overflow-hidden bg-primary py-20 lg:py-28">
-      {/* Decorative */}
       <div className="absolute -left-20 -top-20 h-60 w-60 rounded-full bg-primary-foreground/5" />
       <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-primary-foreground/5" />
 
       <div className="container relative mx-auto px-4 sm:px-6">
         <div className="flex flex-col items-center gap-10 lg:flex-row lg:justify-between lg:gap-16">
-          {/* Text */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -21,11 +19,16 @@ const BookCallSection = () => {
             className="text-center lg:text-left lg:max-w-xl"
           >
             <h2 className="mb-4 font-display text-3xl font-bold text-primary-foreground sm:text-4xl lg:text-5xl">
-              Lass uns sprechen
+              Bereit, online
+              <br />
+              <span className="text-secondary">wirkungsvoller aufzutreten?</span>
             </h2>
-            <p className="mb-8 font-body text-base text-primary-foreground/80 sm:text-lg">
-              In einem kostenlosen Erstgespräch finden wir gemeinsam heraus,
-              wie Sie Ihre Online-Wirkung auf das nächste Level bringen.
+            <p className="mb-4 font-body text-base text-primary-foreground/80 sm:text-lg">
+              Starten Sie jetzt mit einem kostenlosen Gespräch und entdecken Sie,
+              wie Sie souverän und authentisch online wirken.
+            </p>
+            <p className="mb-8 font-body text-base text-primary-foreground/90 italic">
+              Ich freue mich, Sie online zu treffen.
             </p>
             <Button
               size="lg"
@@ -34,12 +37,11 @@ const BookCallSection = () => {
             >
               <a href="/buchen">
                 <Calendar className="mr-2 h-5 w-5" />
-                Kostenloses Gespräch buchen
+                Kostenloses Gespräch vereinbaren
               </a>
             </Button>
           </motion.div>
 
-          {/* Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}

@@ -1,26 +1,30 @@
 import { motion } from "framer-motion";
-import { Clock, Star, CalendarDays, Users } from "lucide-react";
+import { Video, Users, CalendarDays, Clock, ShieldCheck } from "lucide-react";
 
 const items = [
   {
-    icon: Clock,
-    title: "Regelmässige Impulse",
-    description: "Kompakte Tipps für Ihren Berufsalltag — ohne grossen Zeitaufwand lesbar.",
+    icon: Video,
+    title: "Professionell online auftreten",
+    description: "Wirkung, Technik und Kommunikation im Video-Call — damit Ihre Kompetenz auch online sichtbar wird.",
+    highlighted: true,
   },
   {
-    icon: Star,
-    title: "Praktisch & umsetzbar",
-    description: "Konkrete Anregungen, die Sie sofort in Meetings, Calls und Ihrem Arbeitsalltag einsetzen können.",
+    icon: Users,
+    title: "Meetings und Participant Journey",
+    description: "Wie Sie Meetings, Webinare und Events so planen, dass alle Beteiligten wirklich einbezogen sind — von der Einladung bis zum Abschluss.",
+    highlighted: true,
   },
   {
     icon: CalendarDays,
     title: "Frühe Termininfos",
-    description: "Abonnentinnen und Abonnenten erfahren als Erste von neuen Webinaren, Workshops und freien Plätzen.",
+    description: "Als Erste erfahren Sie von neuen Webinaren, Workshops und freien Plätzen — bevor sie öffentlich ausgeschrieben werden.",
+    highlighted: false,
   },
   {
-    icon: Users,
-    title: "Für Menschen mit Wirkung",
-    description: "Inhalte für Fach- und Führungskräfte, Teams, HR und alle, die professioneller kommunizieren möchten.",
+    icon: Clock,
+    title: "Kompakt und sofort lesbar",
+    description: "Jede Ausgabe ist so aufgebaut, dass Sie den Kern in wenigen Minuten erfassen und direkt anwenden können.",
+    highlighted: false,
   },
 ];
 
@@ -39,7 +43,7 @@ const WasErwartetSection = () => {
             Was Sie erwartet
           </h2>
           <p className="mx-auto max-w-2xl font-body text-base text-muted-foreground sm:text-lg">
-            Kein Theorie-Overload. Nur das, was Sie wirklich weiterbringt.
+            Kein theoretischer Überblick — nur das, was Sie in Ihrer täglichen Arbeit wirklich brauchen.
           </p>
         </motion.div>
 
@@ -51,7 +55,9 @@ const WasErwartetSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`rounded-2xl bg-card p-6 sm:p-8 shadow-sm border border-border ${index === 3 ? "sm:col-span-2 lg:col-span-1" : ""}`}
+              className={`rounded-2xl bg-card p-6 sm:p-8 shadow-sm border ${
+                item.highlighted ? "border-primary/40 border-2" : "border-border"
+              }`}
             >
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
                 <item.icon className="h-6 w-6" />
@@ -64,6 +70,26 @@ const WasErwartetSection = () => {
               </p>
             </motion.div>
           ))}
+
+          {/* P.S. Kachel */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="rounded-2xl bg-muted p-6 sm:p-8 shadow-sm border-2 border-dashed border-accent/30 sm:col-span-2 lg:col-span-1"
+          >
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+              <ShieldCheck className="h-6 w-6" />
+            </div>
+            <p className="mb-1 font-body text-sm font-semibold italic text-accent">P.S.</p>
+            <h3 className="mb-2 font-display text-lg font-bold text-foreground">
+              Der Newsletter, den Sie irgendwann nicht mehr brauchen
+            </h3>
+            <p className="font-body text-sm leading-relaxed text-muted-foreground">
+              Nach drei Monaten können Sie selbst entscheiden, ob Sie ein Thema in einem Training vertiefen möchten — oder ob Sie genug wissen. Wir erinnern Sie daran.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>

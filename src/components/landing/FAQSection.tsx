@@ -11,31 +11,25 @@ const faqItems = [
     id: "item-1",
     question: "Für wen ist der Newsletter geeignet?",
     answer:
-      "Für alle, die online professionell auftreten möchten: Coaches & Trainer:innen, Führungskräfte & Mitarbeitende, Berater:innen & Speaker, Selbstständige & Expert:innen. Wenn du online präsent bist, ist deine Wirkung dein wichtigstes Werkzeug.",
+      "Für alle, die online professionell auftreten und ihre Meetings/Events teilnehmerorientiert ausrichten möchten: Coaches & Trainer:innen, Führungskräfte & Mitarbeitende, Berater:innen & Speaker, Selbstständige & Expert:innen. Wenn Sie online präsent sind, ist Ihre Wirkung Ihr wichtigstes Werkzeug.",
   },
   {
     id: "item-2",
     question: "Was erhalte ich nach der Anmeldung?",
     answer:
-      "Sie erhalten sofort Ihre kostenlose Checkliste \u201EIhr perfekter Start in jedes Online-Meeting\u201C per E-Mail. Danach bekommen Sie regelmäßig Impulse für Stimme, Körpersprache, Mindset und Technik — klar strukturiert und sofort anwendbar.",
+      "Sie erhalten sofort Ihre kostenlose Checkliste \u201EIhr perfekter Start in jedes Online-Meeting\u201C per E-Mail. Danach bekommen Sie regelmässig Impulse für Stimme, Körpersprache, Mindset und Technik — klar strukturiert und sofort anwendbar.",
   },
   {
     id: "item-3",
-    question: "Wie oft erscheint der Newsletter?",
-    answer:
-      "Der Impuls-Newsletter erscheint regelmäßig mit kurzen, praxisnahen Tipps und Übungen. Keine Flut an E-Mails — nur wertvolle Impulse, die Sie wirklich weiterbringen.",
-  },
-  {
-    id: "item-4",
     question: "Kann ich mich jederzeit abmelden?",
     answer:
       "Ja, selbstverständlich. In jeder E-Mail finden Sie einen Abmelde-Link. Ein Klick genügt — ganz ohne Angabe von Gründen.",
   },
   {
-    id: "item-5",
-    question: "Was ist das kostenlose Erstgespräch?",
+    id: "item-4",
+    question: "Was ist das kostenlose Gespräch?",
     answer:
-      "In einem unverbindlichen 30-Minuten-Gespräch finden wir gemeinsam heraus, wie Sie Ihre Online-Wirkung auf das nächste Level bringen. Individuell, persönlich und ohne Verkaufsdruck.",
+      "In einem unverbindlichen 30-Minuten-Gespräch finden wir gemeinsam heraus, wie Sie Ihre Online-Wirkung gezielt weiterentwickeln können. Individuell, persönlich und ohne Verkaufsdruck.",
   },
 ];
 
@@ -57,9 +51,6 @@ const FAQSection = () => {
             <h2 className="mb-4 font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
               Ihre Fragen, <span className="text-primary">beantwortet</span>
             </h2>
-            <p className="mx-auto max-w-xl font-body text-base text-muted-foreground sm:text-lg">
-              Hier finden Sie Antworten auf die häufigsten Fragen rund um den Newsletter, die Checkliste und das Erstgespräch.
-            </p>
           </motion.div>
 
           <motion.div

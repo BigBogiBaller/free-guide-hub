@@ -124,8 +124,8 @@ const HeroSection = () => {
 
           {/* Subtext */}
           <p className="mx-auto mb-10 max-w-2xl font-body text-base leading-relaxed text-primary-foreground/75 sm:text-lg">
-            Praxisnahe Impulse zu professionellem Auftreten, digitaler Zusammenarbeit
-            und nachhaltigen Business-Meetings — kompakt, umsetzbar, regelmässig.
+            Praxisnahe Impulse zu professionellem Auftreten im Video-Call,
+            wirkungsvollen Meetings und einer durchdachten Participant Journey — kompakt und sofort anwendbar.
             Eine kostenlose Checkliste für einen professionellen Start in jedes Online-Meeting
             erhalten Sie gleich zu Beginn.
           </p>
@@ -164,7 +164,11 @@ const HeroSection = () => {
                   Jetzt anmelden & informiert bleiben
                 </h3>
                 <p className="mb-5 font-body text-sm text-muted-foreground">
-                  Erhalten Sie Ihre Checkliste + regelmässige Impulse für mehr Wirkung in Online-Veranstaltungen.
+                 Erhalten Sie Ihre Checkliste + regelmässige Impulse für mehr Wirkung in Online-Veranstaltungen.
+                </p>
+                <p className="mb-1 font-body text-xs text-muted-foreground/70">
+                  Kein Spam. Abmeldung jederzeit möglich. Ihre Daten werden vertraulich behandelt.{" "}
+                  <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-accent underline hover:no-underline">Datenschutz</a>
                 </p>
                 <form onSubmit={handleInlineSubmit} className="space-y-3">
                   <Input
@@ -214,6 +218,9 @@ const HeroSection = () => {
                     {!inlineSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
                   </Button>
                 </form>
+                <p className="mt-4 font-body text-xs text-muted-foreground/60 italic leading-relaxed">
+                  Ein kurzer Hinweis zur Ansprache: Da wir uns bisher noch nicht persönlich begegnet sind, bleibe ich gerne beim Sie. In Webinaren und im persönlichen Gespräch ergibt sich das Du meist ganz von selbst.
+                </p>
               </div>
             </motion.div>
           )}
@@ -248,12 +255,10 @@ const HeroSection = () => {
             <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
               {[
                 "Professionell online wirken",
-                "Wirkungskompetenz im Video-Call",
                 "Elevator Pitch & Selbstpräsentation",
                 "Online-Meetings strukturieren",
                 "Nachhaltige Business-Events",
                 "Effizientes Arbeiten mit M365",
-                "Digitale Zusammenarbeit",
                 "Participant Journey",
                 "Future Skills",
                 "Büro- & Arbeitsorganisation",
