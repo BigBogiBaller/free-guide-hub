@@ -2,13 +2,13 @@ import Navbar from "@/components/landing/Navbar";
 import HeroSection from "@/components/landing/HeroSection";
 import BenefitsSection from "@/components/landing/BenefitsSection";
 import WasErwartetSection from "@/components/landing/WasErwartetSection";
-import AboutSection from "@/components/landing/AboutSection";
-import NewsletterSection from "@/components/landing/NewsletterSection";
+import SchwerpunkteSection from "@/components/landing/SchwerpunkteSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import PricingSection from "@/components/landing/PricingSection";
-import FAQSection from "@/components/landing/FAQSection";
+import NewsletterSection from "@/components/landing/NewsletterSection";
 import VideoSection from "@/components/landing/VideoSection";
 import BookCallSection from "@/components/landing/BookCallSection";
+import FAQSection from "@/components/landing/FAQSection";
 import Footer from "@/components/landing/Footer";
 
 const Index = () => {
@@ -18,13 +18,13 @@ const Index = () => {
       <HeroSection />
       <BenefitsSection />
       <WasErwartetSection />
-      <AboutSection />
+      <SchwerpunkteSection />
       <TestimonialsSection />
       <PricingSection />
       <NewsletterSection />
-      <FAQSection />
       <VideoSection />
       <BookCallSection />
+      <FAQSection />
       <Footer />
     </main>
   );
