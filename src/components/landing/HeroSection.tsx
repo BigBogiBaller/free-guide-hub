@@ -124,8 +124,8 @@ const HeroSection = () => {
 
           {/* Subtext */}
           <p className="mx-auto mb-10 max-w-2xl font-body text-base leading-relaxed text-primary-foreground/75 sm:text-lg">
-            Praxisnahe Impulse zu professionellem Auftreten, digitaler Zusammenarbeit
-            und nachhaltigen Business-Meetings — kompakt, umsetzbar, regelmässig.
+            Praxisnahe Impulse zu professionellem Auftreten im Video-Call,
+            wirkungsvollen Meetings und einer durchdachten Participant Journey — kompakt und sofort anwendbar.
             Eine kostenlose Checkliste für einen professionellen Start in jedes Online-Meeting
             erhalten Sie gleich zu Beginn.
           </p>
