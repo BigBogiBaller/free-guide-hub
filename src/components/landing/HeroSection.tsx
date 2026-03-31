@@ -218,6 +218,9 @@ const HeroSection = () => {
                     {!inlineSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
                   </Button>
                 </form>
+                <p className="mt-4 font-body text-xs text-muted-foreground/60 italic leading-relaxed">
+                  Ein kurzer Hinweis zur Ansprache: Da wir uns bisher noch nicht persönlich begegnet sind, bleibe ich gerne beim Sie. In Webinaren und im persönlichen Gespräch ergibt sich das Du meist ganz von selbst.
+                </p>
               </div>
             </motion.div>
           )}

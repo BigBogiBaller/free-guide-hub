@@ -5,32 +5,6 @@ import logoSjp from "@/assets/logo-sjp-lotus.png";
 const Footer = () => {
   return (
     <footer className="bg-foreground text-primary-foreground">
-      {/* CTA Banner */}
-      <div className="border-b border-primary-foreground/10 py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
-            <div>
-              <h2 className="font-display text-3xl font-bold text-primary-foreground sm:text-4xl lg:text-5xl">
-                Bereit, online
-                <br />
-                <span className="text-secondary">wirkungsvoller aufzutreten?</span>
-              </h2>
-              <p className="mt-4 max-w-md font-body text-base text-primary-foreground/70 sm:text-lg">
-                Starten Sie jetzt mit einem kostenlosen Erstgespräch und entdecken Sie,
-                wie Sie souverän und authentisch online wirken.
-              </p>
-            </div>
-            <a
-              href="/buchen"
-              className="group flex items-center gap-3 rounded-full border border-primary-foreground/20 bg-primary-foreground px-8 py-4 font-body text-sm font-semibold text-foreground transition-all hover:bg-primary-foreground/90"
-            >
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              Erstgespräch buchen
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Footer content */}
       <div className="py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6">
@@ -86,7 +60,6 @@ const Footer = () => {
                   if (emailValue) {
                     window.dispatchEvent(new CustomEvent("open-newsletter-dialog", { detail: { email: emailValue } }));
                     input.value = "";
-                    // Scroll to top so user sees the dialog
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }
                 }}
