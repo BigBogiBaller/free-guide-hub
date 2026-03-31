@@ -164,7 +164,11 @@ const HeroSection = () => {
                   Jetzt anmelden & informiert bleiben
                 </h3>
                 <p className="mb-5 font-body text-sm text-muted-foreground">
-                  Erhalten Sie Ihre Checkliste + regelmässige Impulse für mehr Wirkung in Online-Veranstaltungen.
+                 Erhalten Sie Ihre Checkliste + regelmässige Impulse für mehr Wirkung in Online-Veranstaltungen.
+                </p>
+                <p className="mb-1 font-body text-xs text-muted-foreground/70">
+                  Kein Spam. Abmeldung jederzeit möglich. Ihre Daten werden vertraulich behandelt.{" "}
+                  <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-accent underline hover:no-underline">Datenschutz</a>
                 </p>
                 <form onSubmit={handleInlineSubmit} className="space-y-3">
                   <Input
