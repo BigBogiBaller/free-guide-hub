@@ -252,12 +252,10 @@ const HeroSection = () => {
             <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
               {[
                 "Professionell online wirken",
-                "Wirkungskompetenz im Video-Call",
                 "Elevator Pitch & Selbstpräsentation",
                 "Online-Meetings strukturieren",
                 "Nachhaltige Business-Events",
                 "Effizientes Arbeiten mit M365",
-                "Digitale Zusammenarbeit",
                 "Participant Journey",
                 "Future Skills",
                 "Büro- & Arbeitsorganisation",
