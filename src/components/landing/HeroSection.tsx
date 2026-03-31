@@ -239,6 +239,34 @@ const HeroSection = () => {
               <span className="ml-1 font-body text-sm text-primary-foreground/70">20+ Jahre Erfahrung</span>
             </div>
           </div>
+
+          {/* Themen-Tags */}
+          <div className="mt-8">
+            <p className="font-display text-base font-semibold text-primary-foreground/90 mb-4">
+              Diese Themen erwarten Sie
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
+              {[
+                "Professionell online wirken",
+                "Wirkungskompetenz im Video-Call",
+                "Elevator Pitch & Selbstpräsentation",
+                "Online-Meetings strukturieren",
+                "Nachhaltige Business-Events",
+                "Effizientes Arbeiten mit M365",
+                "Digitale Zusammenarbeit",
+                "Participant Journey",
+                "Future Skills",
+                "Büro- & Arbeitsorganisation",
+              ].map((topic) => (
+                <span
+                  key={topic}
+                  className="inline-block rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/15 px-4 py-1.5 font-body text-xs sm:text-sm text-primary-foreground/85"
+                >
+                  {topic}
+                </span>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
 
